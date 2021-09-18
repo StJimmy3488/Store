@@ -1,4 +1,4 @@
-package com.example.store.user;
+package com.example.store.product_category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
