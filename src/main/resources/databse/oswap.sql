@@ -1,22 +1,3 @@
-create table address
-(
-    address_id     bigint       not null
-        primary key,
-    address_line_1 varchar(255) null,
-    address_line_2 varchar(255) null,
-    city           varchar(255) null,
-    region         varchar(255) null,
-    zip_code       varchar(255) null
-);
-
-create table category
-(
-    category_id bigint       not null
-        primary key,
-    created_at  date         not null,
-    name        varchar(255) not null
-);
-
 create table country
 (
     country_id       bigint       not null
@@ -32,50 +13,67 @@ create table hibernate_sequence
 
 create table payment
 (
-    payment_id   bigint       not null
+    payment_id     bigint       not null
         primary key,
-    account_no   varchar(255) not null,
-    expiry       date         not null,
-    payment_type varchar(255) not null,
-    provider     varchar(255) not null
+    account_number varchar(255) not null,
+    expiry         date         not null,
+    payment_type   varchar(255) not null,
+    provider       varchar(255) not null
 );
 
 create table product
 (
-    product_id        bigint       not null
+    product_id                bigint       not null
         primary key,
-    created_at        date         not null,
-    short_description varchar(255) not null,
-    price             double       not null,
-    name              bigint       not null,
-    quantity          int          not null
+    product_created_at        date         not null,
+    product_short_description varchar(255) not null,
+    product_price             double       not null,
+    product_quantity          int          not null,
+    product_name              varchar(255) not null
 );
 
-create table review
+create table product_category
 (
-    review_id  bigint                                   not null
+    product_category_id         bigint       not null
         primary key,
-    created_at date                                     not null,
-    product_id bigint                                   not null,
-    rating     enum ('A', 'AA', 'AAA', 'AAAA', 'AAAAA') not null,
-    review     varchar(255)                             null,
-    user_id    bigint                                   not null
+    product_category_created_at date         not null,
+    product_category_name       varchar(255) not null
 );
 
 create table user
 (
-    user_id    bigint                not null
+    user_id         bigint                not null
         primary key,
-    created_at date                  null,
-    dob        date                  null,
-    email      varchar(255)          null,
-    first_name varchar(255)          null,
-    gender     enum ('FEMALE, MALE') null,
-    last_login date                  null,
-    last_name  varchar(255)          null,
-    password   varchar(255)          null,
-    phone      varchar(255)          null,
-    user_role  varchar(255)          null,
-    username   varchar(255)          null
+    user_created_at date                  null,
+    user_dob        date                  null,
+    user_email      varchar(255)          null,
+    user_first_name varchar(255)          null,
+    user_gender     enum ('FEMALE, MALE') null,
+    user_last_login date                  null,
+    user_last_name  varchar(255)          null,
+    user_phone      varchar(255)          null,
+    user_password   varchar(255)          null,
+    user_user_role  varchar(255)          null,
+    user_username   varchar(255)          null
+);
+
+create table user_address
+(
+    user_address_id        bigint       not null
+        primary key,
+    user_address_line_1    varchar(255) null,
+    user_address_line_2    varchar(255) null,
+    user_address_city      varchar(255) null,
+    user_address_region    varchar(255) null,
+    user_address__zip_code varchar(255) null
+);
+
+create table user_review
+(
+    user_review_id         bigint                                   not null
+        primary key,
+    user_review            varchar(255)                             null,
+    user_review_created_at date                                     not null,
+    user_rating            enum ('A', 'AA', 'AAA', 'AAAA', 'AAAAA') not null
 );
 

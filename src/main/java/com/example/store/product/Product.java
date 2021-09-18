@@ -19,19 +19,19 @@ public class Product {
     private long productId;
 
     @Column(name = "product_name", nullable = false)
-    private long productName;
+    private String productName;
 
     @Column(name = "product_short_description", nullable = false)
-    private String description;
+    private String ProductDescription;
 
     @Column(name = "product_quantity", nullable = false)
-    private Integer quantity;
+    private Integer ProductQuantity;
 
     @Column(name = "product_price", nullable = false)
-    private Double price;
+    private Double ProductPrice;
 
     @Column(name = "product_created_at", nullable = false)
-    private LocalDate createdAt;
+    private LocalDate ProductCreatedAt;
 
 
 }
