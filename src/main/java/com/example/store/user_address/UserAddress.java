@@ -1,4 +1,4 @@
-package com.example.store.address;
+package com.example.store.user_address;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,25 +11,25 @@ import javax.persistence.*;
 @Data
 @Entity
 
-public class Address {
+public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
+    @Column(name = "user_address_id")
     private long addressId;
 
-    @Column(name = "address_line_1")
+    @Column(name = "user_address_line_1")
     private String addressLine1;
 
-    @Column(name = "address_line_2")
+    @Column(name = "user_address_line_2")
     private String addressLine2;
 
-    @Column(name = "city")
+    @Column(name = "user_address_city")
     private String city;
 
-    @Column(name = "region")
+    @Column(name = "user_address_region")
     private String region;
 
-    @Column(name = "zip_code")
+    @Column(name = "user_address__zip_code")
     private String zipCode;
 
 }

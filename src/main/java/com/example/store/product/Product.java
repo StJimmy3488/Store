@@ -18,19 +18,19 @@ public class Product {
     @Column(name = "product_id", nullable = false)
     private long productId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "product_name", nullable = false)
     private long productName;
 
-    @Column(name = "short_description", nullable = false)
+    @Column(name = "product_short_description", nullable = false)
     private String description;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "product_quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "product_price", nullable = false)
     private Double price;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "product_created_at", nullable = false)
     private LocalDate createdAt;
 
 

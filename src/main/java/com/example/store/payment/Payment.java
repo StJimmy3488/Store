@@ -24,7 +24,7 @@ public class Payment {
     @Column(name = "provider", nullable = false)
     private String provider;
 
-    @Column(name = "account_no", nullable = false)
+    @Column(name = "account_number", nullable = false)
     private String accountNo;
 
     @Column(name = "expiry", nullable = false)
