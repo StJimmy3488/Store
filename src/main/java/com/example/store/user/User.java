@@ -14,8 +14,7 @@ enum Gender {FEMALE, MALE}
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
-
+@Table(name = "user")
 @Entity
 public class User {
 

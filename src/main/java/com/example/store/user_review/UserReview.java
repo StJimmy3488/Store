@@ -13,7 +13,7 @@ enum UserRating { A, AA, AAA, AAAA, AAAAA; }
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
+@Table(name = "user_review")
 @Entity
 public class UserReview {
 

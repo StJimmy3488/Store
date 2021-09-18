@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @Entity
+@Table(name = "product_category")
 
 public class ProductCategory {
     @Id

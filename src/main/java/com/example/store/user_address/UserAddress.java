@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Entity
-
+@Table(name = "user_address")
 public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
