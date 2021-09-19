@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="utf-8">
     <meta name="author" content="SDA team A - Linda, Janis, Ilmars">
@@ -10,7 +9,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 
-    <title>Online Store - OSWAP</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">OSWAP</title>
 </head>
 <body>
 
@@ -18,36 +17,30 @@
 
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div class="container-fluid">
-            <a th:href="@{/}">
+            <a th:href="@{/home}">
                 <img th:src="@{/images/basket-icon.png}" alt="OSWAP" width="48" height="48"
-                     src="/static/images/basket-icon.png" class="d-inline-block align-text-top"/>
+                 src="/static/images/basket-icon.png" class="d-inline-block align-text-top"/>
             </a>
-            <a th:href="@{/}" style="text-decoration: none;">
+            <a th:href="@{/home}" style="text-decoration: none;">
                 <span class="navbar-brand mb-0 h1">&nbsp;&nbsp;&nbsp;OSWAP</span>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="nav-link" aria-current="page"
-                                                               th:href="@{/}">Home</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
                     </li>
                     <li class="nav-item">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Sign In</a>
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Sign In</a>
                     </li>
                     <li class="nav-item dropdown">
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#"
-                                                               id="navbarScrollingDropdown2"
-                                                               role="button" data-bs-toggle="dropdown"
-                                                               aria-expanded="false">
-                        Choose Category
-                    </a>
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Choose Category
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown2">
                             <li><a class="dropdown-item" href="#">Cell Phones & Accessories</a></li>
                             <li><a class="dropdown-item" href="#">Home & Garden</a></li>
@@ -57,19 +50,14 @@
                             <li><a class="dropdown-item" href="#">Consumer Electronics</a></li>
                             <li><a class="dropdown-item" href="#">Computers/Tablets</a></li>
 
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><hr class="dropdown-divider"></li>
 
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#"
-                                                               id="navbarScrollingDropdown1"
-                                                               role="button" data-bs-toggle="dropdown"
-                                                               aria-expanded="false">
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Shop by Brand
                     </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown1">
@@ -81,15 +69,13 @@
                             <li><a class="dropdown-item" href="#">Audi</a></li>
                             <li><a class="dropdown-item" href="#">Volvo</a></li>
 
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><hr class="dropdown-divider"></li>
 
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Your Cart</a>
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Your Cart</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -100,39 +86,27 @@
         </div>
     </nav>
 
+    <!-- Content container begins here -->
 
-    <!--    <H4 class="pt-3">Featured products</H4>-->
+    <div class="container py-4">
 
-    <!-- Content container begins-->
-    <div layout:fragment="content">
+        <!--************************************************************
+            ***   OSWAP content starts here ("layout")
+        *************************************************************-->
 
-        <div class="container my-5">
-            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                    <h1 class="display-4 fw-bold lh-1">Birkenstock Papillio Teddy, Best Bets for Special Occasions!</h1>
-                    <p class="lead">Luxe teddy shearling, oversized buckles and elevated platforms transform the iconic
-                        Arizona and Boston for fall. An homage to the iconic denim brand featuring exclusive collections
-                        from Collina Strada, Melody Ehsani and Thompson Street Studio.</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Start shopping right
-                            now!
-                        </button>
-                        <a type="button" th:href="@{/products/all_products}"
-                           class="btn btn-outline-secondary  btn-lg px-4">View all products</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-md-1 p-0 overflow-hidden shadow-lg">
-                    <img class="rounded-lg-3"
-                         th:src="@{/images/root_images/rootimage_01.png}"
-                         src="/static/images/root_images/rootimage_01.png"
-                         alt="Make Up" width="720">
-                </div>
-            </div>
-        </div>
+
+
+        <!--************************************************************
+            ***   OSWAP content ends here ("layout")
+        *************************************************************-->
 
     </div>
+    <!-- Content container ends here -->
 
-    <!-- Content container ends -->
+    <section layout:fragment="content">
+
+
+    </section>
 
     <!--     Footer Nav Bar  starts   -->
     <div class="align-bottom navbar-light bg-light">
