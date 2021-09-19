@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name = "order_settings")
 public class OrderSettings {
 
-    public enum OrderStatus {NEW, CHECKOUT, PAID, FAILED, SHIPPED, DELIVERED, RETURNED, COMPLETED}
+    private enum OrderStatus {NEW, CHECKOUT, PAID, FAILED, SHIPPED, DELIVERED, RETURNED, COMPLETED}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
