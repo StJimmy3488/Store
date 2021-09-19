@@ -15,13 +15,13 @@ create table order_settings
 (
     order_settings_id bigint       not null
         primary key,
-    sub_total         double       null,
+    sub_total         double       not null,
     created_at        date         null,
-    session_id        int          null,
+    session_id        int          not null,
     shipping          double       null,
-    order_status      varchar(255) null,
+    order_status      varchar(255) not null,
     total             double       null,
-    user_id           int          null,
+    user_id           int          not null,
     vat               double       null
 );
 
@@ -51,7 +51,7 @@ create table image
 (
     image_id   bigint       not null
         primary key,
-    file_name  varchar(255) null,
+    file_name  varchar(255) not null,
     product_id bigint       null,
     constraint FKgpextbyee3uk9u6o2381m7ft1
         foreign key (product_id) references product (product_id)
@@ -61,9 +61,9 @@ create table order_item
 (
     order_item_id       bigint not null
         primary key,
-    order_item_added_at date   null,
-    order_item_price    double null,
-    order_item_quantity int    null,
+    order_item_added_at date   not null,
+    order_item_price    double not null,
+    order_item_quantity int    not null,
     product_id          bigint null,
     order_settings_id   bigint null,
     constraint FK551losx9j75ss5d6bfsqvijna
@@ -76,16 +76,16 @@ create table user
 (
     user_id         bigint       not null
         primary key,
-    user_created_at date         null,
-    user_dob        date         null,
+    user_created_at date         not null,
+    user_dob        date         not null,
     user_email      varchar(255) not null,
     user_first_name varchar(255) not null,
     user_gender     varchar(255) null,
     user_last_login date         null,
     user_last_name  varchar(255) not null,
-    user_phone      varchar(255) null,
+    user_phone      varchar(255) not null,
     user_password   varchar(255) not null,
-    user_user_role  varchar(255) null,
+    user_user_role  varchar(255) not null,
     user_username   varchar(255) not null
 );
 
@@ -93,8 +93,8 @@ create table cart
 (
     cart_id    bigint       not null
         primary key,
-    cart_token varchar(255) not null,
-    session_id varchar(255) not null,
+    cart_token varchar(255) null,
+    session_id varchar(255) null,
     user_id    bigint       null,
     constraint FKl70asp4l4w0jmbm1tqyofho4o
         foreign key (user_id) references user (user_id)
@@ -104,10 +104,10 @@ create table cart_item
 (
     cart_item_id         bigint not null
         primary key,
-    cart_item_created_at date   null,
-    quantity             int    null,
-    cart_id              bigint null,
-    product_id           bigint null,
+    cart_item_created_at date   not null,
+    quantity             int    not null,
+    cart_id              bigint not null,
+    product_id           bigint not null,
     constraint FK1uobyhgl1wvgt1jpccia8xxs3
         foreign key (cart_id) references cart (cart_id),
     constraint FKjcyd5wv4igqnw413rgxbfu4nv
@@ -131,11 +131,11 @@ create table user_address
 (
     user_address_id        bigint       not null
         primary key,
-    user_address_line_1    varchar(255) null,
+    user_address_line_1    varchar(255) not null,
     user_address_line_2    varchar(255) null,
-    user_address_city      varchar(255) null,
-    user_address_region    varchar(255) null,
-    user_address__zip_code varchar(255) null,
+    user_address_city      varchar(255) not null,
+    user_address_region    varchar(255) not null,
+    user_address__zip_code varchar(255) not null,
     country_country_id     bigint       null,
     user_user_id           bigint       null,
     constraint FKcp5ewg2f9dl5bi95u5ebqu265
@@ -146,13 +146,13 @@ create table user_address
 
 create table user_review
 (
-    user_review_id         bigint                                   not null
+    user_review_id         bigint       not null
         primary key,
-    user_review            varchar(255)                             null,
-    user_review_created_at date                                     not null,
-    user_rating            enum ('A', 'AA', 'AAA', 'AAAA', 'AAAAA') not null,
-    user_id                bigint                                   null,
-    product_id             bigint                                   null,
+    user_review            varchar(255) not null,
+    user_review_created_at date         not null,
+    user_rating            int          null,
+    user_id                bigint       null,
+    product_id             bigint       null,
     constraint FKdar2k0tl4t2m2j7pbvgxn9reo
         foreign key (product_id) references product (product_id),
     constraint FKk4378yigvs29qpwh8ughgs4gk
