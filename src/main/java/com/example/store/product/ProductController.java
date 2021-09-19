@@ -16,6 +16,4 @@ public class ProductController {
         return "/products/all_products";
     }
 
-
-
 }
