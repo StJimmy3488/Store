@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-
-enum UserRating { A, AA, AAA, AAAA, AAAAA; }
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -17,25 +14,22 @@ enum UserRating { A, AA, AAA, AAAA, AAAAA; }
 @Entity
 public class UserReview {
 
+    private enum UserRating {A, AA, AAA, AAAA, AAAAA;}
+
     @Id
-    @Column(name = "user_review_id")
+    @Column(name = "user_review_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long UserReviewId;
 
-    @Column(name = "user_review")
+    @Column(name = "user_review", nullable = false)
     private String UserReview;
 
-    @Column(columnDefinition = "ENUM('A', 'AA', 'AAA', 'AAAA', 'AAAAA')", name = "user_rating", nullable = false)
+    @Column(name = "user_rating")
     @Enumerated(EnumType.ORDINAL)
     private UserRating userRating;
 
     @Column(name = "user_review_created_at", nullable = false)
     private LocalDate UserReviewCreatedAt;
 
-//    @Column(name = "user_review_product_id", nullable = false)
-//    private Long productId;
-//
-//    @Column(name = "user_review_user_id", nullable = false)
-//    private Long userId;
 
 }

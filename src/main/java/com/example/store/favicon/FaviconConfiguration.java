@@ -11,11 +11,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * User: Ilmars MEDNIS
- * Created: 18.09.2021
- */
-
 @Configuration
 public class FaviconConfiguration {
 

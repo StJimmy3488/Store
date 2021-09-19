@@ -1,11 +1,18 @@
 package com.example.store.product;
 
+import com.example.store.cart_item.CartItem;
+import com.example.store.order_item.OrderItem;
+import com.example.store.product_image.ProductImage;
+import com.example.store.user.User;
+import com.example.store.user_review.UserReview;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,6 +39,21 @@ public class Product {
 
     @Column(name = "product_created_at", nullable = false)
     private LocalDate ProductCreatedAt;
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private List<UserReview> userReviews = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private List<ProductImage> productImages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 
 }
