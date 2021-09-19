@@ -3,7 +3,6 @@ package com.example.store.product;
 import com.example.store.cart_item.CartItem;
 import com.example.store.order_item.OrderItem;
 import com.example.store.product_image.ProductImage;
-import com.example.store.user.User;
 import com.example.store.user_review.UserReview;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +21,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_id", nullable = false)
+    @Column(name = "product_id")
     private long productId;
 
     @Column(name = "product_name", nullable = false)
@@ -37,7 +36,7 @@ public class Product {
     @Column(name = "product_price", nullable = false)
     private Double ProductPrice;
 
-    @Column(name = "product_created_at", nullable = false)
+    @Column(name = "product_created_at")
     private LocalDate ProductCreatedAt;
 
     @OneToMany
@@ -54,6 +53,9 @@ public class Product {
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+
+
 
 
 }
