@@ -50,7 +50,6 @@ public class productServiceTest {
         Assertions.assertEquals(savedProduct, product);
 
     }
-
     @Test
     public void testFindAllProducts() {
         Product product = new Product();
