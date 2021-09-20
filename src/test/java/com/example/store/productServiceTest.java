@@ -40,6 +40,7 @@ public class productServiceTest {
         assertThat(savedProduct.getProductCreatedAt()).isNotNull();
     }
 
+
     @Test
     public void testSaveOneProduct() {
         Product product = new Product();
