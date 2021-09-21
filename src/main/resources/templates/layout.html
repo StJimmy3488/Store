@@ -22,7 +22,7 @@
                      src="/static/images/basket-icon.png" class="d-inline-block align-text-top"/>
             </a>
             <a th:href="@{/index}" style="text-decoration: none;">
-                <span class="navbar-brand mb-0 h1">&nbsp;&nbsp;&nbsp;OSWAP</span>
+                <span class="navbar-brand mb-0 h1">OSWAP</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,18 +31,17 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active"  aria-current="page" th:href="@{/index}">Home is right here</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
                     </li>
                     <li class="nav-item">
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Sign In</a>
+                        <a class="nav-link" href="#">Sign In</a>
                     </li>
                     <li class="nav-item dropdown">
-
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Choose Category
-                    </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Choose Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="#">Cell Phones & Accessories</a></li>
                             <li><a class="dropdown-item" href="#">Home & Garden</a></li>
                             <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
@@ -50,38 +49,11 @@
                             <li><a class="dropdown-item" href="#">Jewelry & Watches</a></li>
                             <li><a class="dropdown-item" href="#">Consumer Electronics</a></li>
                             <li><a class="dropdown-item" href="#">Computers/Tablets</a></li>
-
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Shop by Brand
-                    </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown1">
-                            <li><a class="dropdown-item" href="#">Apple</a></li>
-                            <li><a class="dropdown-item" href="#">Samsung</a></li>
-                            <li><a class="dropdown-item" href="#">Huawei</a></li>
-                            <li><a class="dropdown-item" href="#">Adidas</a></li>
-                            <li><a class="dropdown-item" href="#">Nike</a></li>
-                            <li><a class="dropdown-item" href="#">Audi</a></li>
-                            <li><a class="dropdown-item" href="#">Volvo</a></li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Your Cart</a>
                     </li>
                 </ul>
                 <form class="d-flex">
