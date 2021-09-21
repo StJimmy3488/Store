@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="author" content="SDA team A - Linda, Janis, Ilmars">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 
@@ -16,11 +17,11 @@
 
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div class="container-fluid">
-            <a th:href="@{/home}">
+            <a th:href="@{/index}">
                 <img th:src="@{/images/basket-icon.png}" alt="OSWAP" width="48" height="48"
-                 src="/static/images/basket-icon.png" class="d-inline-block align-text-top"/>
+                     src="/static/images/basket-icon.png" class="d-inline-block align-text-top"/>
             </a>
-            <a th:href="@{/home}" style="text-decoration: none;">
+            <a th:href="@{/index}" style="text-decoration: none;">
                 <span class="navbar-brand mb-0 h1">&nbsp;&nbsp;&nbsp;OSWAP</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -30,16 +31,17 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+                        <a class="nav-link active"  aria-current="page" th:href="@{/index}">Home is right here</a>
                     </li>
                     <li class="nav-item">
                         &nbsp;&nbsp;&nbsp;<a class="nav-link" href="#">Sign In</a>
                     </li>
                     <li class="nav-item dropdown">
 
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Choose Category
-                        </a>
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2"
+                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose Category
+                    </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown2">
                             <li><a class="dropdown-item" href="#">Cell Phones & Accessories</a></li>
                             <li><a class="dropdown-item" href="#">Home & Garden</a></li>
@@ -49,14 +51,17 @@
                             <li><a class="dropdown-item" href="#">Consumer Electronics</a></li>
                             <li><a class="dropdown-item" href="#">Computers/Tablets</a></li>
 
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
 
-                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        &nbsp;&nbsp;&nbsp;<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1"
+                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Shop by Brand
                     </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown1">
@@ -68,7 +73,9 @@
                             <li><a class="dropdown-item" href="#">Audi</a></li>
                             <li><a class="dropdown-item" href="#">Volvo</a></li>
 
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
@@ -85,27 +92,25 @@
         </div>
     </nav>
 
-    <!-- Content container begins here -->
-
+    <!-- OSWAP Content container begins here -->
     <div class="container py-4">
 
         <!--************************************************************
             ***   OSWAP content starts here ("layout")
         *************************************************************-->
 
+        <div layout:fragment="content">
 
+
+        </div>
 
         <!--************************************************************
             ***   OSWAP content ends here ("layout")
         *************************************************************-->
 
     </div>
-    <!-- Content container ends here -->
+    <!-- OSWAP Content container ends here -->
 
-    <section layout:fragment="content">
-
-
-    </section>
 
     <!--     Footer Nav Bar  starts   -->
     <div class="align-bottom navbar-light bg-light">
@@ -124,7 +129,7 @@
                     <ul class="list-unstyled">
                         <li><a href="#" style="text-decoration: none;">Payment Methods</a></li>
                         <li><a href="#" style="text-decoration: none;">GDPR</a></li>
-                        <li><a href="#" style="text-decoration: none;">Cookies Policy</a></li>
+                        <li><a th:href="@{/cookies_policy}" style="text-decoration: none;">Cookies Policy</a></li>
                         <li><a href="#" style="text-decoration: none;">Privacy Policy</a></li>
                     </ul>
                 </div>

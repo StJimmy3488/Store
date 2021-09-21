@@ -15,7 +15,7 @@ public class ProductImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "image_id", nullable = false)
+    @Column(name = "image_id", nullable = false, unique = true)
     private Long imageId;
 
     @Column(name = "file_name", nullable = false)

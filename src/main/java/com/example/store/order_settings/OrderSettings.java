@@ -22,7 +22,7 @@ public class OrderSettings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_settings_id", nullable = false)
+    @Column(name = "order_settings_id", nullable = false, unique = true)
     private Long OrderSettingsId;
 
     @Column(name = "user_id", nullable = false)

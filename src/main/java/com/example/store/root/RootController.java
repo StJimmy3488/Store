@@ -15,22 +15,22 @@ public class RootController {
 
     @RequestMapping("/gdpr")
     public String gDPR() {
-        return "gdpr";
+        return "/documents/gdpr";
     }
 
     @RequestMapping("/payment_methods")
     public String paymentMethod() {
-        return "paymeth";
+        return "/documents/paymeth";
     }
 
     @RequestMapping("/cookies_policy")
     public String cookiesPolicy() {
-        return "cookpol";
+        return "/documents/cookpol";
     }
 
     @RequestMapping("/privacy_policy")
     public String privacyPolicy() {
-        return "privpol";
+        return "/documents/privpol";
     }
 
 }

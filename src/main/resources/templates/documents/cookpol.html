@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="index">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cookies policy</title>
 </head>
 <body>
+
+<div layout:fragment="content">
+
+    <h2>Cookies policy</h2>
+
+    <p>Our Platform uses cookies. Cookies are text files containing information to identify
+        repeat visitors solely for the duration of their visit to our internet sites. Cookies
+        are saved on the hard disk or any other permanent memory of your terminal device.
+        The cookies on our web pages do not contain any personal data whatsoever about you.</p>
+
+    <p>Cookies save you from having to enter data multiple times, make it easier for you
+        to transmit certain content and help us identify especially popular areas of our
+        online offering. This lets us tailor the content of our Platform more precisely to your needs.</p>
+
+    <p>If you wish, you can disable the cookies at any time via your browser settings. Please
+        use your browser’s help function to find out how to change these settings.</p>
+
+</div>
 
 </body>
 </html>

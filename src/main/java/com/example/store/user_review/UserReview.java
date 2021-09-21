@@ -17,7 +17,7 @@ public class UserReview {
     private enum UserRating {A, AA, AAA, AAAA, AAAAA;}
 
     @Id
-    @Column(name = "user_review_id", nullable = false)
+    @Column(name = "user_review_id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long UserReviewId;
 

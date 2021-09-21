@@ -19,7 +19,7 @@ import java.util.List;
 public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_category_id", nullable = false)
+    @Column(name = "product_category_id", nullable = false, unique = true)
     private long categoryId;
 
     @Column(name = "product_category_name", nullable = false)

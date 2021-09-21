@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "payment_id", nullable = false)
+    @Column(name = "payment_id", nullable = false, unique = true)
     private long paymentId;
 
     @Column(name = "payment_type", nullable = false)

@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_address_id", nullable = false)
+    @Column(name = "user_address_id", nullable = false, unique = true)
     private long addressId;
 
     @Column(name = "user_address_line_1", nullable = false)

@@ -17,7 +17,7 @@ import java.util.List;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "country_id", nullable = false)
+    @Column(name = "country_id", nullable = false, unique = true)
     private Long countryId;
 
     @Column(name = "name", nullable = false)

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cart_item_id", nullable = false)
+    @Column(name = "cart_item_id", nullable = false, unique = true)
     private Long cartItemId;
 
     @Column(name = "quantity", nullable = false)
