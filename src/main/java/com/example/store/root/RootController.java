@@ -1,5 +1,6 @@
 package com.example.store.root;
 
+import org.apache.coyote.http11.filters.SavedRequestInputFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,11 @@ public class RootController {
     @RequestMapping("/privacy_policy")
     public String privacyPolicy() {
         return "/documents/privpol";
+    }
+
+    @RequestMapping("/404")
+    public String nothingFound() {
+        return "404";
     }
 
 }
