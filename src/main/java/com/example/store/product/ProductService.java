@@ -1,17 +1,15 @@
 package com.example.store.product;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -25,17 +23,26 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+
     public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
+
 
     public Optional<Product> findByProductName(String name) {
         return productRepository.findProductByProductName(name);
     }
 
+
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
+    }
 
+
+    // Find all products paginated
+    public Page<Product> findAllPagable(int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, 4);
+        return productRepository.findAll(pageable);
     }
 
 }

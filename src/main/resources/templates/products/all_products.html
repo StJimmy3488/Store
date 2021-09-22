@@ -9,7 +9,72 @@
 
 <div layout:fragment="content">
 
-    <H4 class="pt-3">All products</H4>
+    <!--/* ********************************************** */-->
+    <div class="container">
+        <div class="row">
+
+            <!--/* Pagination starts */-->
+            <div class="col-8">
+                <nav aria-label="top-pagination">
+                    <ul class="pagination pagination-sm">
+                        <!--/* Previous page link */-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:if="${currentPage > 1}"
+                               th:href="@{${paginationLink} + ${currentPage - 1}}">Previous</a>
+                            <span class="page-item disabled"
+                                  th:unless="${currentPage > 1}">
+                                <span class="page-link">Previous</span>
+                            </span>
+                        </li>
+                        <!--/* Active pages links */-->
+                        <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                            <a class="page-link"
+                               th:if="${i != currentPage}"
+                               th:href="@{${paginationLink} + ${i}}">[[${i}]]</a>
+                            <span class="page-item active" aria-current="page"
+                                  th:unless="${i != currentPage}">
+                                <span class="page-link">[[${i}]]</span>
+                            </span>
+                        </li>
+                        <!--/* Next page link */-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:if="${currentPage < totalPages}"
+                               th:href="@{${paginationLink} + ${currentPage + 1}}">Next</a>
+                            <span class="page-item disabled"
+                                  th:unless="${currentPage < totalPages}">
+                                <span class="page-link">Next</span>
+                            </span>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <!--/* Pagination ends */-->
+
+            <!--/* Products count starts */-->
+            <div class="col-2">
+                <div class="justify-content-left">
+                    <p>Total pages: <b>[[${totalPages}]]</b></p>
+                </div>
+            </div>
+            <!--/* Products count ends */-->
+
+            <!--/* Total pages starts */-->
+            <div class="col-2">
+                <div class="justify-content-right">
+                    <p>Total products in store: <b>[[${totalItems}]]</b></p>
+                </div>
+            </div>
+            <!--/* Total pages ends */-->
+
+        </div>
+    </div>
+
+    <!--/* ********************************************** */-->
+
+    <H4 class="py-2">All products</H4>
 
     <!--/* ********************************************** */-->
 
@@ -40,6 +105,5 @@
 </div>
 
 <!--/* ********************************************** */-->
-
 </body>
 </html>
