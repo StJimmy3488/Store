@@ -1,17 +1,26 @@
 package com.example.store.user;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
+
+    private static Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
@@ -32,11 +41,11 @@ public class UserController {
         return "register_success";
     }
 
-    @GetMapping("/users")  //ja nu pēkšņi vajag adminam sarakstu  :D
-    public String listUsers(Model model) {
-        List<User> listUsers = userService.findAllUsers();
-        model.addAttribute("listUsers", listUsers);
 
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
+        model.addAttribute("users", userService.findAllUsers(pageable));
+        LOG.info("All users");
         return "users";
     }
 }

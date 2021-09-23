@@ -1,7 +1,7 @@
 package com.example.store.user;
 
-import com.example.store.product.Product;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<User> findAllUsers() {
+    public List<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll();
     }
 
