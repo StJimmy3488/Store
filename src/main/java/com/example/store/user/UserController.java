@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/store")
 public class UserController {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
@@ -26,7 +27,7 @@ public class UserController {
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
-        return "registration_form";
+        return "user/registration_form";
     }
 
     @PostMapping("/process_register")
@@ -36,14 +37,22 @@ public class UserController {
         user.setUserPassword(encodedPassword);
         userService.saveOrUpdateUser(user);
 
-        return "register_success";
+        return "user/register_success";
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping("/users")
     public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
         model.addAttribute("users", userService.findAllUsers(pageable));
         LOG.info("All users");
-        return "users";
+        //return "users";
+        return null;
     }
+
+    @GetMapping("/sign_in")
+    public String signIn() {
+        return "user/login_form";
+    }
+
+
 }
