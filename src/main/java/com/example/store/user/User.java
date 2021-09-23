@@ -56,7 +56,7 @@ public class User {
     private Integer UserAge;
 
     @Email
-    @Column(name = "user_email", nullable = false)
+    @Column(name = "user_email", nullable = false, unique = true)
     private String UserEmail;
 
     @Column(name = "user_phone", nullable = false)
