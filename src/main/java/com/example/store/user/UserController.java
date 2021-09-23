@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
-    private static Logger LOG = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 

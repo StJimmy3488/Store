@@ -17,6 +17,16 @@
             <div class="col-8">
                 <nav aria-label="top-pagination">
                     <ul class="pagination pagination-sm">
+                        <!--/* First page link */-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:if="${currentPage > 1}"
+                               th:href="@{${paginationLink} + '1'}">First</a>
+                            <span class="page-item disabled"
+                                  th:unless="${currentPage > 1}">
+                                <span class="page-link">First</span>
+                            </span>
+                        </li>
                         <!--/* Previous page link */-->
                         <li class="page-item">
                             <a class="page-link"
@@ -45,6 +55,16 @@
                             <span class="page-item disabled"
                                   th:unless="${currentPage < totalPages}">
                                 <span class="page-link">Next</span>
+                            </span>
+                        </li>
+                        <!--/* Last page link */-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:if="${currentPage < totalPages}"
+                               th:href="@{${paginationLink} + ${totalPages}}">Last</a>
+                            <span class="page-item disabled"
+                                  th:unless="${currentPage < totalPages}">
+                                <span class="page-link">Last</span>
                             </span>
                         </li>
 

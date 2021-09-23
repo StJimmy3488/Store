@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="index">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+    <meta charset="UTF-8">
+    <title>Register</title>
 </head>
 <body>
+<div layout:fragment="content">
 
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-4">
+            </div>
+            <div class="col-4 my-5 justify-content-center">
+                <main class="form-signin">
+                    <h3 class="text-center">Please register!</h3>
+                    <form class="mt-3">
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInputFirstName" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="formGroupExampleInputFirstName"
+                                   placeholder="First nae">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInputLastName" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="formGroupExampleInputLastName"
+                                   placeholder="Last name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInputUsername" class="form-label">username</label>
+                            <input type="text" class="form-control" id="formGroupExampleInputUsername"
+                                   placeholder="Username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupexampleInputEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="formGroupexampleInputEmail"
+                                   aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupexampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="formGroupexampleInputPassword1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupexampleInputPassword1" class="form-label">Repeat Password</label>
+                            <input type="password" class="form-control" id="formGroupexampleInputPassword1">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </main>
+                <div class="my-2 col-4">
+                </div>
+            </div>
+
+        </div>
 </body>
 </html>
