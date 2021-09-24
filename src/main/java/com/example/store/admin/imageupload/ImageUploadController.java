@@ -1,7 +1,7 @@
 package com.example.store.admin.imageupload;
 
-import java.io.File;
-
+import com.example.store.product.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,47 +11,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/admin")
 public class ImageUploadController {
 
+    @Autowired
     private FileUploadService fileUploadService;
 
+    @Autowired
     private ImageService imageService;
 
+    private final ProductService productService;
+
     @GetMapping("/add_image")
-    public String uploadImage() {
-        return "admin/upload_image";
+    public String addImage() {
+        return "/upload_image";
     }
 
-    @PostMapping("/upload_mage")
-    public String uploadImage(@RequestParam("image") MultipartFile imageFile, RedirectAttributes redirectAttributes) {
-        if(imageFile.isEmpty()) {
+    @PostMapping("/upload_image")
+    public String uploadImage(@RequestParam("newImage") MultipartFile imageFile,
+                              RedirectAttributes redirectAttributes) {
+        if (imageFile.isEmpty()) {
             redirectAttributes.addFlashAttribute(
                     "errorMessage",
                     "Please choose file to upload.");
-            return "redirect:/";
+            return "/admin/upload_image";
         }
 
         File file = fileUploadService.upload(imageFile);
-        if(file == null) {
+        if (file == null) {
             redirectAttributes.addFlashAttribute(
                     "errorMessage",
                     "Upload failed.");
-            return "redirect:/";
+            return "admin/upload_image";
 
         }
-        boolean resizeResult =  imageService.resizeImage(file);
-        if(!resizeResult) {
+        boolean resizeResult = imageService.resizeImage(file);
+        if (!resizeResult) {
             redirectAttributes.addFlashAttribute(
                     "errorMessage",
                     "Resize failed.");
-            return "redirect:/";
+            return "admin/upload_image";
         }
 
         redirectAttributes.addFlashAttribute(
                 "successMessage",
                 "File upload successfully.");
-        return "redirect:/";
+        return "admin/upload_image";
     }
 }

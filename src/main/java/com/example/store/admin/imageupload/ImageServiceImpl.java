@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-    @Value("${image.folder}")
+    @Value(value = "/static/images/product_images")
     private String imageFolder;
 
-    @Value("${image.size}")
+    @Value("400")
     private Integer imageSize;
 
     private Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);

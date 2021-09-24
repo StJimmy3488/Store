@@ -12,19 +12,31 @@
 
     <div class="row align-items-md-stretch">
         <div class="col-md-9">
-            <div class="h-100 p-5 bg-light border rounded-3">
-                <h2>Change the background</h2>
-                <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look.
-                    Then, mix and match with additional component themes and more.</p>
-                <button class="btn btn-outline-secondary" type="button">Example button</button>
+            <div class="h-100 px-5 py-3 border rounded-3">
+                <h4 class="fw-bolder" th:text="${product.getProductName()}">Product name</h4>
+                <img th:src="@{/images/product_images/0101400.jpg}" class="rounded mx-auto mt-4 d-block"
+                     alt="Samsung Galaxy Z Fold3 5G" width="400" height="338"
+                     src="/static/images/product_images/0101400.jpg"/>
+                <p class="fs-4 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
+                <p th:text="${product.getProductDescription()}">Product description</p>
+
+                <div class="d-grid gap-2 mb-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-success"
+                            th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
+                        <span class="px-5">Add to Cart</span>
+                    </button>
+                </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="h-100 p-5 bg-light border rounded-3">
-                <h2>Add borders</h2>
-                <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be
-                    sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of
-                    both column's content for equal-height.</p>
+                <h2>Shipping INFO</h2>
+                <p>We base our shipping charges on the value of your order.
+                    To make sure you receive the fewest shipments possible,
+                    we'll do our best to ship everything to you at once.</p>
+
+                <p>Ground Shipping is free for orders more than € 50</p>
                 <button class="btn btn-outline-secondary" type="button">Example button</button>
             </div>
         </div>

@@ -1,5 +1,6 @@
 package com.example.store.admin.imageupload;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +14,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
+@RequiredArgsConstructor
 public class FileUploadServiceImpl implements FileUploadService {
 
-    @Value("${image.folder}")
+    @Value(value = "/static/images/product_images")
     private String imageFolder;
 
     private Logger logger = LoggerFactory.getLogger(FileUploadServiceImpl.class);
