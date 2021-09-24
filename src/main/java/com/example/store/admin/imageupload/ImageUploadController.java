@@ -28,7 +28,7 @@ public class ImageUploadController {
 
     @GetMapping("/add_image")
     public String addImage() {
-        return "/upload_image";
+        return "/admin/upload_image";
     }
 
     @PostMapping("/upload_image")
