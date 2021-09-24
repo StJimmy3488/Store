@@ -100,25 +100,27 @@
 
     <div class="row py-2" th:fragment="list">
         <div class="col-sm-3" th:each="product : ${all_products}">
-            <div class="card mb-4 rounded-3 shadow-sm">
-                <div class="card-header py-3">
-                    <h5 class="my-0 fw-normal" th:text="${product.getProductName()}">Product name</h5>
-                </div>
+            <div class="card text-center">
                 <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li class="pb-2">
-                            <img th:src="@{/images/mobile-device.png}" class="rounded mx-auto d-block"
-                                 alt="Samsung Galaxy Z Fold3 5G" width="128" height="128"
-                                 src="/static/images/mobile-device.png"/>
-                        </li>
-                        <li th:text="${product.getProductDescription()}">Product description
-                        </li>
-                    </ul>
-                    <h4 class="card-title pricing-card-title" th:text="${'€ ' + product.getProductPrice()}">Product
-                        price</h4>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Add to Cart</button>
+                    <a class="text-decoration-none" th:href="@{/products/product/{id}(id=${product.getProductId()})}">
+                        <p class="fs-6" th:text="${product.getProductName()}">Product name</p>
+                    </a>
+                    <a class="text-decoration-none link-dark" th:href="@{/products/product/{id}(id=${product.getProductId()})}">
+                        <p class="fs-5 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
+                    </a>
+                    <a th:href="@{/products/product/{id}(id=${product.getProductId()})}">
+                        <img th:src="@{/images/mobile-device.png}" class="rounded mx-auto d-block"
+                             alt="Samsung Galaxy Z Fold3 5G" width="128" height="128"
+                             src="/static/images/mobile-device.png"/>
+                    </a>
+                    <p th:text="${product.getProductDescription()}">Product description</p>
+                    <button type="button" class="btn btn-success btn-sm"
+                            th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
+
         </div>
     </div>
 

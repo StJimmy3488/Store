@@ -14,7 +14,7 @@
 
 <div class="container-xl">
 
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom">
         <div class="container-fluid">
             <a th:href="@{/index}">
                 <img th:src="@{/images/logo/oswap_200.png}" alt="OSWAP" width="200" height="67"
@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/index}"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/store/sign_in}"><b>Sign In</b></a>
@@ -35,10 +35,13 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/store/register}"><b>Register</b></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/products/all_products}"><b>All Products</b></a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Choose Category
+                            <b>Choose Category</b>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="#">Cell Phones & Accessories</a></li>
@@ -53,6 +56,9 @@
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/store/register}"><b>Your Cart</b></a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -70,7 +76,7 @@
             ***   OSWAP content starts here ("layout")
         ************************************************************* */-->
 
-        <div layout:fragment="content">
+        <div layout:fragment="content" class="mb-5">
 
 
         </div>
@@ -84,26 +90,27 @@
 
 
     <!--/* Footer Nav Bar  starts */-->
-    <div class="align-bottom navbar-light bg-light">
+    <div class="align-bottom fixed-bottom navbar-light bg-light border-top">
         <footer class="container-lg pt-3">
             <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                     <h2 class="navbar-brand">OSWAP</h2>
                     <p><b>O</b>nline <b>S</b>tore <b>W</b>ith <b>A</b>dmin <b>P</b>anel</p>
                 </div>
 
-                <div class="col-6 mt-5 justify-content-center">
+                <div class="col-6 text-center">
                     <p><a style="text-decoration: none;" target="_blank"
                           th:href="@{https://sdacademy.lv/}">SDA Riga</a>, Latvia, <b>JavaRiga-14</b></p>
+                    <p>&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> OSWAP</p>
                 </div>
 
-                <div class="col-2">
-                    <ul class="list-unstyled justify-content-end">
-                        <li><a href="#" style="text-decoration: none;">Payment Methods</a></li>
-                        <li><a href="#" style="text-decoration: none;">GDPR</a></li>
-                        <li><a th:href="@{/cookies_policy}" style="text-decoration: none;">Cookies Policy</a></li>
-                        <li><a href="#" style="text-decoration: none;">Privacy Policy</a></li>
-                    </ul>
+                <div class="col-3 text-end">
+
+                    <p><a href="#" style="text-decoration: none;">Payment Methods</a>&nbsp;
+                        <a href="#" style="text-decoration: none;">GDPR</a><br />
+                        <a th:href="@{/cookies_policy}" style="text-decoration: none;">Cookies Policy</a>&nbsp;
+                        <a href="#" style="text-decoration: none;">Privacy Policy</a></p>
+
                 </div>
             </div>
         </footer>
@@ -113,5 +120,8 @@
 
 </div>
 
+<!--/* Bootstrap core JavaScript */-->
+<script src="?static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -44,4 +44,11 @@ public class ProductController {
         return "/products/all_products";
     }
 
+    @GetMapping("/product/{id}")
+    public String viewProduct(@PathVariable("id") Long productId, Model model) {
+        Product product = productService.findById(productId);
+        model.addAttribute("product", product);
+        return "/products/product";
+    }
+
 }

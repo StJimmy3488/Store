@@ -28,6 +28,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Product findById(Long productId) {
+        return productRepository.getById(productId);
+    }
+
 
     public Optional<Product> findByProductName(String name) {
         return productRepository.findProductByProductName(name);
