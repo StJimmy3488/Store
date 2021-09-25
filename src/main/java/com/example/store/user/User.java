@@ -27,7 +27,7 @@ import java.util.Objects;
 @Entity
 public class User {
 
-    private enum UserGender {FEMALE, MALE}
+//    private enum UserGender {FEMALE, MALE}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,10 +35,10 @@ public class User {
     private long userId;
 
     @Column(name = "user_first_name", nullable = false)
-    private String UserFirstName;
+    private String userFirstName;
 
     @Column(name = "user_last_name", nullable = false)
-    private String UserLastName;
+    private String userLastName;
 
     @Column(name = "user_username", nullable = false, unique = true)
     private String username;
@@ -47,27 +47,27 @@ public class User {
     private String userPassword;
 
     @Column(name = "user_last_login")
-    private LocalDate UserLastLogin;
+    private LocalDate userLastLogin;
 
-    @Column(name = "user_dob", nullable = false)
-    private LocalDate UserDateOfBirth;
+    @Column(name = "user_dob")
+    private LocalDate userDateOfBirth;
 
     @Transient
-    private Integer UserAge;
+    private Integer userAge;
 
     @Email
     @Column(name = "user_email", nullable = false, unique = true)
-    private String UserEmail;
+    private String userEmail;
 
-    @Column(name = "user_phone", nullable = false)
-    private String UserPhoneNumber;
+    @Column(name = "user_phone")
+    private String userPhoneNumber;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")
-    private UserGender UserGender;
+    private String userGender;
 
     @Column(name = "user_created_at", nullable = false)
-    private LocalDate UserCreatedAt;
+    private LocalDate userCreatedAt;
 
     @OneToMany
     @JoinColumn(name = "user_id")
@@ -101,8 +101,8 @@ public class User {
     private String userRole;
 
 
-    public Integer UserGetAge() {
-        return Period.between(UserDateOfBirth, LocalDate.now()).getYears();
+    public Integer userGetAge() {
+        return Period.between(userDateOfBirth, LocalDate.now()).getYears();
     }
 
     @Override

@@ -44,15 +44,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/user/login_form.html")
-//                .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/store", true)
-//                .failureUrl("/login.html?error=true")
                 .usernameParameter("username")
-                .defaultSuccessUrl("/store")
+                .defaultSuccessUrl("/products/all_products")
                 .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/store/sign_in").permitAll()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .deleteCookies();
     }

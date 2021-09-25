@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 
@@ -53,7 +55,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         user.setRoles(Set.of(role));
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
-
+//        user.setUserAge(user.userGetAge());    * enable after datepicker will be placed in registration_form
+        user.setUserCreatedAt(LocalDate.now());
         return userRepository.save(user);
     }
 

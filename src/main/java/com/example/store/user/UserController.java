@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class UserController {
 
 
     private final UserService userService;
+    private final CustomUserDetailsService customUserDetailsService;
+
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -38,15 +41,17 @@ public class UserController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(encodedPassword);
-        userService.saveOrUpdateUser(user);
+        customUserDetailsService.registerUser(user);
 
-        return "register_success";
+        return "user/register_success";
     }
 
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
         model.addAttribute("users", userService.findAllUsers(pageable));
-        return "user_list";
+        return "user/user_list";
     }
+
+
 }
