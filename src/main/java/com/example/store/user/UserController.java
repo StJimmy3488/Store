@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/store")
 public class UserController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+    private static Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
@@ -27,7 +28,7 @@ public class UserController {
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
-        return "user/registration_form";
+        return "registration_form";
     }
 
     @PostMapping("/process_register")
@@ -37,22 +38,14 @@ public class UserController {
         user.setUserPassword(encodedPassword);
         userService.saveOrUpdateUser(user);
 
-        return "user/register_success";
+        return "register_success";
     }
 
 
-    @GetMapping("/users")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
         model.addAttribute("users", userService.findAllUsers(pageable));
         LOG.info("All users");
-        //return "users";
-        return null;
+        return "users";
     }
-
-    @GetMapping("/sign_in")
-    public String signIn() {
-        return "user/login_form";
-    }
-
-
 }

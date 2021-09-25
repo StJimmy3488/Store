@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProductCategoryService {
 
+//    public ProductCategory findAllProductsByProductCategory() {
+//
+//    }
 }

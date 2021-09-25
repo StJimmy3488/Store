@@ -1,12 +1,10 @@
 package com.example.store;
 
-import com.example.store.cart.Cart;
-import com.example.store.product.Product;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.time.LocalDate;
+
 
 
 @SpringBootApplication

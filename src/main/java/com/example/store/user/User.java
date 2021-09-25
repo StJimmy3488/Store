@@ -5,9 +5,8 @@ import com.example.store.payment.Payment;
 import com.example.store.role.Role;
 import com.example.store.user_address.UserAddress;
 import com.example.store.user_review.UserReview;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,11 +15,14 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
 @Table(name = "user")
 @Entity
 public class User {
@@ -38,7 +40,7 @@ public class User {
     @Column(name = "user_last_name", nullable = false)
     private String UserLastName;
 
-    @Column(name = "user_username", nullable = false)
+    @Column(name = "user_username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "user_password", nullable = false)
@@ -69,17 +71,21 @@ public class User {
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private List<UserReview> userReviews = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private List<Payment> payments = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private List<Cart> carts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
     private List<UserAddress> userAddresses = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -89,13 +95,26 @@ public class User {
                     name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "role_id"))
-    Collection<Role> userRole;
+    Collection<Role> roles;
 
+    @Transient
+    private String userRole;
 
 
     public Integer UserGetAge() {
         return Period.between(UserDateOfBirth, LocalDate.now()).getYears();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId);
+    }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

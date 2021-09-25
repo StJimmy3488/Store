@@ -1,11 +1,15 @@
 package com.example.store.role;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "role")
@@ -16,4 +20,17 @@ public class Role {
     private Long roleId;
     @Column(name = "role_name")
     private String roleName;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Role role = (Role) o;
+        return Objects.equals(roleId, role.roleId);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }
