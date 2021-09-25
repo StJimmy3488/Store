@@ -40,14 +40,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http.authorizeRequests()
-                .antMatchers("/","/index","/store/*").permitAll()
+                .antMatchers("/*").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login_form.html")
+                .loginPage("/user/login_form.html")
 //                .loginProcessingUrl("/perform_login")
                 .defaultSuccessUrl("/store", true)
 //                .failureUrl("/login.html?error=true")
-                .usernameParameter("email")
+                .usernameParameter("username")
                 .defaultSuccessUrl("/store")
                 .permitAll()
                 .and()
