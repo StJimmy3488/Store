@@ -2,18 +2,19 @@ package com.example.store.user;
 
 import com.example.store.cart.Cart;
 import com.example.store.payment.Payment;
+import com.example.store.role.Role;
 import com.example.store.user_address.UserAddress;
 import com.example.store.user_review.UserReview;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -42,9 +43,6 @@ public class User {
 
     @Column(name = "user_password", nullable = false)
     private String userPassword;
-
-    @Column(name = "user_user_role", nullable = false)
-    private String userRole;
 
     @Column(name = "user_last_login")
     private LocalDate UserLastLogin;
@@ -81,8 +79,18 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Cart> carts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     private List<UserAddress> userAddresses = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "role_id"))
+    Collection<Role> userRole;
+
 
 
     public Integer UserGetAge() {
