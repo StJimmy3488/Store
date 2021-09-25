@@ -14,7 +14,7 @@
         <div class="row">
 
             <!--/* Pagination starts */-->
-            <div class="col-8">
+            <div class="col-6">
                 <nav aria-label="top-pagination">
                     <ul class="pagination pagination-sm">
                         <!--/* First page link */-->
@@ -73,13 +73,25 @@
             </div>
             <!--/* Pagination ends */-->
 
-            <!--/* Products count starts */-->
+            <!--/* Products sorting order selection starts */-->
             <div class="col-2">
-                <div class="justify-content-left">
-                    <p>Total pages: <b>[[${totalPages}]]</b></p>
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn px-3 btn-sm btn-primary dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false" id="sortProducts">
+                        Sort Products by:
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sortProducts">
+                        <li><a class="dropdown-item" href="#">Name Ascending</a></li>
+                        <li><a class="dropdown-item" href="#">Name Descending</a></li>
+                        <li><a class="dropdown-item" href="#">Price Ascending</a></li>
+                        <li><a class="dropdown-item" href="#">Price Descending<</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Do not sort</a></li>
+                    </ul>
                 </div>
             </div>
-            <!--/* Products count ends */-->
+            <!--/* Products sorting order selection ends */-->
 
             <!--/* Total pages starts */-->
             <div class="col-2">
@@ -105,7 +117,8 @@
                     <a class="text-decoration-none" th:href="@{/products/product/{id}(id=${product.getProductId()})}">
                         <p class="fs-6" th:text="${product.getProductName()}">Product name</p>
                     </a>
-                    <a class="text-decoration-none link-dark" th:href="@{/products/product/{id}(id=${product.getProductId()})}">
+                    <a class="text-decoration-none link-dark"
+                       th:href="@{/products/product/{id}(id=${product.getProductId()})}">
                         <p class="fs-5 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
                     </a>
                     <a th:href="@{/products/product/{id}(id=${product.getProductId()})}">

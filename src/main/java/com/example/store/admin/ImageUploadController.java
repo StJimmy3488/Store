@@ -2,7 +2,6 @@ package com.example.store.admin;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.extern.slf4j.XSlf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,8 +33,8 @@ public class ImageUploadController {
             log.error("Error saving image", e);
             returnValue = "error";
         }
-        return returnValue;
-
+        return "redirect:/admin/add_image";
     }
+
 
 }
