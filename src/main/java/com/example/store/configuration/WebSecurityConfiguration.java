@@ -32,8 +32,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
@@ -41,19 +39,20 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http.authorizeRequests()
                 .antMatchers("/*").permitAll()
                 .and()
                 .formLogin()
-//                .loginPage("/user/login_form.html")
+                .loginPage("/user/login_form.html")
+//                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/store", true)
+//                .failureUrl("/login.html?error=true")
                 .usernameParameter("username")
-                .defaultSuccessUrl("/products/all_products")
+                .defaultSuccessUrl("/store")
                 .permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
+                .logout().logoutSuccessUrl("/store/sign_in").permitAll()
                 .invalidateHttpSession(true)
                 .deleteCookies();
     }

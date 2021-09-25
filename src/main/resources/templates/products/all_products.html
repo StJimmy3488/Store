@@ -122,11 +122,11 @@
                         <p class="fs-5 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
                     </a>
                     <a th:href="@{/products/product/{id}(id=${product.getProductId()})}">
-                        <img th:src="@{/images/mobile-device.png}" class="rounded mx-auto d-block"
-                             alt="Samsung Galaxy Z Fold3 5G" width="128" height="128"
-                             src="/static/images/mobile-device.png"/>
+                        <img th:src="@{/images/product_images/0101128.jpg}" class="rounded mx-auto d-block"
+                             alt="Samsung Galaxy Z Fold3 5G" width="128" height="108"
+                             src="/static/images/product_images/0101128.jpg"/>
                     </a>
-                    <p th:text="${product.getProductDescription()}">Product description</p>
+                    <p class="mt-2" th:text="${product.getProductDescription()}">Product description</p>
                     <button type="button" class="btn btn-success btn-sm"
                             th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
                         Add to Cart

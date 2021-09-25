@@ -45,7 +45,7 @@ public class ProductService {
 
     // Find all products paginated
     public Page<Product> findAllPageable(int pageNumber, String sortField, String sortDirection) {
-        Pageable pageable = PageRequest.of(pageNumber - 1, 4);
+        Pageable pageable = PageRequest.of(pageNumber - 1, 6);
         return productRepository.findAll(pageable);
     }
 

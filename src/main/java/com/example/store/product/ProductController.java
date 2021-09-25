@@ -1,5 +1,6 @@
 package com.example.store.product;
 
+import com.example.store.product_category.ProductCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductController {
 
     private final ProductService productService;
+    private final ProductCategoryService productCategoryService;
 
     // Show all trips existing in DB paginated
     @GetMapping("/all_products")
     public String getAllProducts(Model model) {
+        model.addAttribute("all_product_categories", productCategoryService
+                .findAlProductCategories());
         return getAllProductsByPage(model, 1, "productName", "asc");
     }
 
