@@ -1,8 +1,6 @@
 package com.example.store.user;
 
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/user")
 public class UserController {
 
-//    private static Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
@@ -31,10 +28,10 @@ public class UserController {
         return "registration_form";
     }
 
-    @GetMapping("/sign_in")
-    public String signIn() {
-        return "/user/login_form";
-    }
+//    @GetMapping("/sign_in")
+//    public String signIn() {
+//        return "/user/login_form";
+//    }
 
     @PostMapping("/process_register")
     public String processRegister(User user) {
@@ -46,11 +43,10 @@ public class UserController {
         return "register_success";
     }
 
-//
-//    @RequestMapping(value = "/users", method = RequestMethod.GET)
-//    public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
-//        model.addAttribute("users", userService.findAllUsers(pageable));
-//        LOG.info("All users");
-//        return "user_list";
-//    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
+        model.addAttribute("users", userService.findAllUsers(pageable));
+        return "user_list";
+    }
 }

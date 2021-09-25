@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
 @Configuration
@@ -31,6 +32,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
@@ -38,20 +41,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http.authorizeRequests()
                 .antMatchers("/*").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/user/login_form.html")
-//                .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/store", true)
-//                .failureUrl("/login.html?error=true")
+//                .loginPage("/user/login_form.html")
                 .usernameParameter("username")
-                .defaultSuccessUrl("/store")
+                .defaultSuccessUrl("/products/all_products")
                 .permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/store/sign_in").permitAll()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .deleteCookies();
     }
