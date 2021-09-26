@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="author" content="SDA team A - Linda Aušte, Janis Dreimanis, Ilmārs Mednis">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script th:src="@{/static/js/popper.min.js}"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 
@@ -41,23 +41,27 @@
                     </li>
                     <li class="nav-item">
 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-primary position-relative"
                                 th:href="@{/store/cart}">
-                            <span class="px-4 fw-bolder">Your Cart</span>
+                            <span class="px-4 fw-bolder">Select Product Category:</span>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 0
                                 <span class="visually-hidden">products</span>
                             </span>
                         </button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     </li>
 
                     <li class="nav-item">
-                        <div class="dropdown ml-5 pl-5">
-                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="dropdown">
+
+                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown button
                             </button>
+
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -125,8 +129,5 @@
 
 </div>
 
-<!--/* Bootstrap core JavaScript */-->
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
