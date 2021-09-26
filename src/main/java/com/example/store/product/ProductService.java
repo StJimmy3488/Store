@@ -32,16 +32,13 @@ public class ProductService {
         return productRepository.getById(productId);
     }
 
-
     public Optional<Product> findByProductName(String name) {
         return productRepository.findProductByProductName(name);
     }
 
-
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
     }
-
 
     // Find all products paginated
     public Page<Product> findAllPageable(int pageNumber, String sortField, String sortDirection) {

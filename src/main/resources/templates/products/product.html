@@ -12,25 +12,52 @@
 
     <div class="row align-items-md-stretch">
         <div class="col-md-9">
-            <div class="h-100 px-5 py-3 border rounded-3">
+
+            <div class="h-100 px-5 py-3 border shadow rounded-3">
                 <h4 class="fw-bolder" th:text="${product.getProductName()}">Product name</h4>
-                <img th:src="@{/images/product_images/0101400.jpg}" class="rounded mx-auto mt-4 d-block"
+                <img th:src="@{/images/product_images/0101400.jpg}" class="rounded mx-auto my-4 d-block"
                      alt="Samsung Galaxy Z Fold3 5G" width="400" height="338"
                      src="/static/images/product_images/0101400.jpg"/>
-                <p class="fs-4 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
+
+
+                <div class="container mt-4 mb-3">
+                    <div class="row">
+
+                        <div class="col-4">
+                            <p class="fs-4 fw-bolder" th:text="${'€ ' + product.getProductPrice()}">Product price</p>
+                        </div>
+                        <div class="col-8 d-flex justify-content-end">
+                            <form class="form-horizontal" th:action="@{/action_page}">
+
+                                <div class="row">
+                                    <div class="col-4 d-flex justify-content-end">
+                                        <label for="quantity" class="mr-sm-2">Quantity</label>
+                                    </div>
+                                    <div class="col-2 d-flex justify-content-start">
+                                        <input type="text" class="form-control form-control-sm" placeholder="1"
+                                               id="quantity">
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-sm btn-success"
+                                                th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
+                                            <span class="px-5">Add to Cart</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+
                 <p th:text="${product.getProductDescription()}">Product description</p>
 
-                <div class="d-grid gap-2 mb-2 d-md-flex justify-content-md-end">
-                    <button type="button" class="btn btn-success"
-                            th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
-                        <span class="px-5">Add to Cart</span>
-                    </button>
-                </div>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="h-100 p-5 bg-light border rounded-3">
+            <div class="h-100 p-5 bg-light border shadow rounded-3">
                 <h2>Shipping INFO</h2>
                 <p>We base our shipping charges on the value of your order.
                     To make sure you receive the fewest shipments possible,
