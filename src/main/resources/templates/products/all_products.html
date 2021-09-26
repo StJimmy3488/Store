@@ -14,7 +14,7 @@
         <div class="row">
 
             <!--/* Pagination starts */-->
-            <div class="col-6">
+            <div class="col-8">
                 <nav aria-label="top-pagination">
                     <ul class="pagination pagination-sm">
                         <!--/* First page link */-->
@@ -74,32 +74,19 @@
             <!--/* Pagination ends */-->
 
             <!--/* Products sorting order selection starts */-->
-            <div class="col-2">
-                <!-- Example single danger button -->
-                <div class="btn-group">
-                    <button type="button" class="btn px-3 btn-sm btn-primary dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false" id="sortProducts">
-                        Sort Products by:
+            <div class="col-4">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="sortProducts">
-                        <li><a class="dropdown-item" href="#">Name Ascending</a></li>
-                        <li><a class="dropdown-item" href="#">Name Descending</a></li>
-                        <li><a class="dropdown-item" href="#">Price Ascending</a></li>
-                        <li><a class="dropdown-item" href="#">Price Descending<</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Do not sort</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </div>
             </div>
-            <!--/* Products sorting order selection ends */-->
-
-            <!--/* Total pages starts */-->
-            <div class="col-2">
-                <div class="justify-content-right">
-                    <p>Total products in store: <b>[[${totalItems}]]</b></p>
-                </div>
-            </div>
-            <!--/* Total pages ends */-->
+            <!--/* Category selection ends */-->
 
         </div>
     </div>
