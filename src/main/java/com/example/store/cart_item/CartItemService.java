@@ -3,6 +3,7 @@ package com.example.store.cart_item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,5 +23,10 @@ public class CartItemService {
 
     public void deleteById(Long cartItemId){
         cartItemRepository.deleteById(cartItemId);
+    }
+
+    public CartItem saveOrUpdateCartItem(CartItem cartItem){
+        cartItem.setCartItemCreatedAt(LocalDate.now());
+        return cartItemRepository.save(cartItem);
     }
 }
