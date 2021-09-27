@@ -2,6 +2,7 @@ package com.example.store.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class AdminController {
 
-    public String uploadImage() {
-        return "/upload_image";
+    @GetMapping("/test")
+    public String testAdmin() {
+        return "/admin/test";
     }
 
 

@@ -22,8 +22,7 @@ public class ProductController {
     // Show all trips existing in DB paginated
     @GetMapping("/all_products")
     public String getAllProducts(Model model) {
-        model.addAttribute("all_product_categories", productCategoryService
-                .findAlProductCategories());
+        model.addAttribute("all_product_categories", productCategoryService.findAlProductCategories());
         return getAllProductsByPage(model, 1, "productName", "asc");
     }
 
