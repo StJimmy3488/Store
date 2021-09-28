@@ -1,6 +1,7 @@
 package com.example.store.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,7 +17,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -45,33 +45,31 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/login*").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                .antMatchers("/**").hasAuthority("ADMIN")
-                .antMatchers("/", "/index", "/products/all_products", "/cart/**").hasAnyAuthority("USER")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                //.loginPage("/login")
+                .formLogin().permitAll()
                 .successHandler(authenticationSuccessHandler)
-                //.formLogin().permitAll()
                 .and()
                 .logout().permitAll()
+                .deleteCookies("JSESSIONID")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
+                .and().csrf().disable()
         ;
     }
-//                .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll();
-//        http.authorizeRequests()
-//                .antMatchers("/*").permitAll()
-//                .and()
-//                .formLogin()
-//                .usernameParameter("username")
-//                .defaultSuccessUrl("/products/all_products")
-//                .permitAll()
-//                .and()
-//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/login")
-//                .invalidateHttpSession(true)
-//                .deleteCookies();
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("user").password("pass").roles("USER")
+                .and()
+                .withUser("admin").password("pass").roles("ADMIN")
+                .and()
+                .withUser("ilmars").password("pass").roles("ADMIN");
+    }
 
 }

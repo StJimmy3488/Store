@@ -20,6 +20,11 @@ public class RootController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String signIn() {
+        return "/login";
+    }
+
     @RequestMapping("/gdpr")
     public String gDPR() {
         return "/documents/gdpr";

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/webjars/js/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{css/signin.css}">
+    <title>Login</title>
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+
+    <div class="text--center mb-3 text-danger" th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div class="text--center mb-3 text-danger" th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+    <form th:action="@{/login}" method="post" class="form login">
+        <img class="mb-4" th:src="@{/images/logo/oswap_200.png}" alt="OSWAP" width="200" height="67"
+             src="/static/images/logo/oswap_200.png" />
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> OSWAP</p>
+    </form>
+</main>
+
+</body>
+</html>
