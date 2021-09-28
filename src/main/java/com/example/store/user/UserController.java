@@ -30,10 +30,13 @@ public class UserController {
         return "user/registration_form";
     }
 
-//    @GetMapping("/sign_in")
-//    public String signIn() {
-//        return "/user/login_form";
-//    }
+    @GetMapping("/sign_in")
+    public String signIn() {
+        return "/user/login_form";
+    }
+
+
+//TODO- Must be updated
 
 //    @PostMapping("/process_register")
 //    public String processRegister(User user) {
@@ -45,12 +48,13 @@ public class UserController {
 //        return "user/register_success";
 //    }
 
+//TODO - must be updated 'list all users'
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
-        model.addAttribute("users", userService.findAllUsers(pageable));
-        return "user/user_list";
-    }
+//    @RequestMapping(value = "/users", method = RequestMethod.GET)
+//    public String list(@PageableDefault(size = 8, direction = Sort.Direction.ASC, sort = "username") Pageable pageable, Model model) {
+//        model.addAttribute("users", userService.findAllUsers(pageable));
+//        return "user/user_list";
+//    }
 
 
 }
