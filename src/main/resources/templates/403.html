@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Error - Nothing found</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="px-4 py-5 mt-2 text-center">
+        <img class="d-block mx-auto mb-4" th:src="@{/images/logo/oswap_404.png}"
+             src="/static/images/logo/oswap_404.png" alt="" width="700" height="167">
+        <h3 class="display-5 fw-bold">403 - Forbidden!</h3>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Sorry, but you do not have permission to access this resource!</p>
+            <p class="lead mb-4">Perhaps you can return back to homepage and see if you can find something else.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a type="button" class="btn btn-outline-primary btn-lg py-2 px-4 gap-3" th:href="@{/index}">Go To Home</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
