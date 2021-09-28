@@ -35,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         var authorities = mapRolesToAuthorities(user.getRoles());
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getUserPassword(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getUserPassword(), authorities);
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
@@ -45,9 +45,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public User registerUser(User user) {
-        boolean isUserExisting = userRepository.existsByUsername(user.getUsername());
+        boolean isUserExisting = userRepository.existsByUsername(user.getUserName());
         if (isUserExisting) {
-            throw new RuntimeException("User with username " + user.getUsername() + " exists");
+            throw new RuntimeException("User with username " + user.getUserName() + " exists");
         }
 
         var role = roleRepository.findByRoleNameIgnoreCase(user.getUserRole())

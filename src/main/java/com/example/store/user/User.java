@@ -6,16 +6,15 @@ import com.example.store.role.Role;
 import com.example.store.user_address.UserAddress;
 import com.example.store.user_review.UserReview;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -36,7 +35,7 @@ public class User {
     private long userId;
 
     @Column(name = "user_username", nullable = false, unique = true)
-    private String username;
+    private String userName;
 
     @Column(name = "user_password", nullable = false)
     private String userPassword;
@@ -70,8 +69,17 @@ public class User {
     @Column(name = "user_last_login")
     private LocalDate userLastLogin;
 
-    @Column(name="enabled")
-    private Integer enabled;
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
 
     @OneToMany
@@ -93,15 +101,6 @@ public class User {
     @ToString.Exclude
     private List<UserAddress> userAddresses = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"))
-    Collection<Role> roles;
-
     @Transient
     private String userRole;
 
@@ -110,13 +109,13 @@ public class User {
         return Period.between(userDateOfBirth, LocalDate.now()).getYears();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+//        User user = (User) o;
+//        return Objects.equals(userId, user.userId);
+//    }
 
     @Override
     public int hashCode() {
