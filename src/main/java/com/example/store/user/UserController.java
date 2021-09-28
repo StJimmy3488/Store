@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,15 +35,15 @@ public class UserController {
 //        return "/user/login_form";
 //    }
 
-    @PostMapping("/process_register")
-    public String processRegister(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getUserPassword());
-        user.setUserPassword(encodedPassword);
-        customUserDetailsService.registerUser(user);
-
-        return "user/register_success";
-    }
+//    @PostMapping("/process_register")
+//    public String processRegister(User user) {
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        String encodedPassword = passwordEncoder.encode(user.getUserPassword());
+//        user.setUserPassword(encodedPassword);
+//        customUserDetailsService.registerUser(user);
+//
+//        return "user/register_success";
+//    }
 
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)

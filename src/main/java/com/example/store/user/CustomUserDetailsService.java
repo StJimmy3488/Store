@@ -1,5 +1,7 @@
 package com.example.store.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,18 +9,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@Data
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
-//    private final RoleRepository roleRepository;
-//    private final PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
+
+    //    private final RoleRepository roleRepository;
+    //    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUsernameIgnoreCase(userName)
                 .orElseThrow(() -> new RuntimeException(userName + " could not be found"));
         return new MyUserDetails(user);
+
+
 //        var authorities = mapRolesToAuthorities(user.getRoles());
 //        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getUserPassword(), authorities);
     }

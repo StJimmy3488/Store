@@ -1,6 +1,4 @@
-package com.example.store.configuration;
-
-import com.example.store.user.CustomUserDetailsService;
+package com.example.store.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -11,16 +9,28 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@RequiredArgsConstructor
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final CustomUserDetailsService customUserDetailsService;
+    public final CustomUserDetailsService customUserDetailsService;
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService();
+    }
+
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Bean
@@ -28,7 +38,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(customUserDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder);
-
         return authenticationProvider;
     }
 
@@ -40,18 +49,25 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll();
-        http.authorizeRequests()
-                .antMatchers("/*").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .usernameParameter("username")
-                .defaultSuccessUrl("/products/all_products")
-                .permitAll()
+                .formLogin().permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
-                .deleteCookies();
+                .logout().permitAll()
+        ;
     }
+//                .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll();
+//        http.authorizeRequests()
+//                .antMatchers("/*").permitAll()
+//                .and()
+//                .formLogin()
+//                .usernameParameter("username")
+//                .defaultSuccessUrl("/products/all_products")
+//                .permitAll()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/login")
+//                .invalidateHttpSession(true)
+//                .deleteCookies();
+
 }
