@@ -17,14 +17,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "user")
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@Table(name = "user")
-@Entity
+
 public class User {
 
 //    private enum UserGender {FEMALE, MALE}
@@ -34,20 +35,17 @@ public class User {
     @Column(name = "user_id", nullable = false, unique = true)
     private long userId;
 
-    @Column(name = "user_first_name", nullable = false)
-    private String userFirstName;
-
-    @Column(name = "user_last_name", nullable = false)
-    private String userLastName;
-
     @Column(name = "user_username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "user_password", nullable = false)
     private String userPassword;
 
-    @Column(name = "user_last_login")
-    private LocalDate userLastLogin;
+    @Column(name = "user_first_name", nullable = false)
+    private String userFirstName;
+
+    @Column(name = "user_last_name", nullable = false)
+    private String userLastName;
 
     @Column(name = "user_dob")
     private LocalDate userDateOfBirth;
@@ -55,19 +53,26 @@ public class User {
     @Transient
     private Integer userAge;
 
+    @Column(name = "user_phone")
+    private String userPhoneNumber;
+
     @Email
     @Column(name = "user_email", nullable = false, unique = true)
     private String userEmail;
 
-    @Column(name = "user_phone")
-    private String userPhoneNumber;
-
-//    @Enumerated(EnumType.STRING)
+    //    @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")
     private String userGender;
 
     @Column(name = "user_created_at", nullable = false)
     private LocalDate userCreatedAt;
+
+    @Column(name = "user_last_login")
+    private LocalDate userLastLogin;
+
+    @Column(name="enabled")
+    private Integer enabled;
+
 
     @OneToMany
     @JoinColumn(name = "user_id")
