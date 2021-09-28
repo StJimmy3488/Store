@@ -83,7 +83,7 @@
     <div class="align-center">
         <div sec:authorize="isAuthenticated()">Welcome <b><span sec:authentication="name">Username</span></b>&nbsp;&nbsp;
             Role: <b><span sec:authentication="principal.authorities">Role</span></b>&nbsp;&nbsp;
-            <a th:href="@{/logout}" class="btn btn-outline-success btn-sm btn-lg" role="button" aria-disabled="true">Logout</a>
+            <b><a th:href="@{/logout}" style="text-decoration: none;">Logout</a></b>
         </div>
     </div>
 
@@ -120,7 +120,7 @@
                     <p><a style="text-decoration: none;" target="_blank"
                           th:href="@{https://sdacademy.lv/}">SDA Riga</a>, Latvia, <b>JavaRiga-14</b></p>
                     <p>&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> OSWAP&nbsp;&nbsp;&nbsp;
-                        <a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')" th:href="@{/admin/test}" style="text-decoration: none;">Admin panel</a></p>
+                        <a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')" th:href="@{/admin/main}" style="text-decoration: none;">Admin panel</a></p>
                 </div>
 
                 <div class="col-3 text-end">
