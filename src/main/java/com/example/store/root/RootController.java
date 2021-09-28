@@ -40,6 +40,11 @@ public class RootController {
         return "/documents/privpol";
     }
 
+    @RequestMapping("/403")
+    public String accessDenied() {
+        return "403";
+    }
+
     @RequestMapping("/404")
     public String nothingFound() {
         return "404";
