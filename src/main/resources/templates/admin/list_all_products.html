@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="admin_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>All Products</title>
+</head>
+<body>
+
+<div layout:fragment="admin-content">
+    <div class="controller-sm">
+
+        <!--/* ********************************************** */-->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+
+                    <H4 class="py-2">List of All Products</H4>
+                </div>
+
+                <!--/* ********************************************** */-->
+
+                <!--/* Pagination starts */-->
+                <div class="col-8">
+                    <nav aria-label="top-pagination">
+                        <ul class="pagination pagination-sm mt-3">
+                            <!--/* First page link */-->
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:if="${currentPage > 1}"
+                                   th:href="@{${paginationLink} + '1'}">First</a>
+                                <span class="page-item disabled"
+                                      th:unless="${currentPage > 1}">
+                                <span class="page-link">First</span>
+                            </span>
+                            </li>
+                            <!--/* Previous page link */-->
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:if="${currentPage > 1}"
+                                   th:href="@{${paginationLink} + ${currentPage - 1}}">Previous</a>
+                                <span class="page-item disabled"
+                                      th:unless="${currentPage > 1}">
+                                <span class="page-link">Previous</span>
+                            </span>
+                            </li>
+                            <!--/* Active pages links */-->
+                            <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                <a class="page-link"
+                                   th:if="${i != currentPage}"
+                                   th:href="@{${paginationLink} + ${i}}">[[${i}]]</a>
+                                <span class="page-item active" aria-current="page"
+                                      th:unless="${i != currentPage}">
+                                <span class="page-link">[[${i}]]</span>
+                            </span>
+                            </li>
+                            <!--/* Next page link */-->
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:if="${currentPage < totalPages}"
+                                   th:href="@{${paginationLink} + ${currentPage + 1}}">Next</a>
+                                <span class="page-item disabled"
+                                      th:unless="${currentPage < totalPages}">
+                                <span class="page-link">Next</span>
+                            </span>
+                            </li>
+                            <!--/* Last page link */-->
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:if="${currentPage < totalPages}"
+                                   th:href="@{${paginationLink} + ${totalPages}}">Last</a>
+                                <span class="page-item disabled"
+                                      th:unless="${currentPage < totalPages}">
+                                <span class="page-link">Last</span>
+                            </span>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <!--/* Pagination ends */-->
+
+            </div>
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price, €</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${all_products}">
+                <th th:text="${product.getProductId()}">1</th>
+                <td><img th:src="@{/images/product_images/0101128.jpg}" class="rounded mx-auto d-block"
+                         alt="Samsung Galaxy Z Fold3 5G" width="128" height="108"
+                         src="/static/images/product_images/0101128.jpg"/></td>
+                <td th:text="${product.getProductName()}">Product Name</td>
+                <td>Quantity</td>
+                <td th:text="${'€ ' + product.getProductPrice()}">Price</td>
+                <td>Edit, Delete</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <!--/* ********************************************** */-->
+
+    </div>
+</div>
+</body>
+</html>

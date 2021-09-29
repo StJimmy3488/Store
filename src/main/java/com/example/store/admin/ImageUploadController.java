@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,8 +28,11 @@ public class ImageUploadController {
 
     private String UPLOAD_DIR = "src/main/resources/static/images/product_images/";
 
+    //TODO - Need to find correct decision for dynamic directory creation
 //    File theDir = new File(UPLOAD_DIR + productId);
-//    if(!theDir.exists()) {theDir.mkdirs(); }
+//    if(!theDir.exists()) {
+//    theDir.mkdirs();
+//    }
 
 
     @GetMapping("/upload_image")

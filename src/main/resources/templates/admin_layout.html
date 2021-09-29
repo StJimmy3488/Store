@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarsExample07">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><b>Home</b></a>
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="product" data-bs-toggle="dropdown"
-                           aria-expanded="false"><b>Products</b></a>
+                        <a class="nav-link active dropdown-toggle" href="#" id="product" data-bs-toggle="dropdown"
+                           aria-expanded="false">Products</a>
                         <ul class="dropdown-menu" aria-labelledby="product">
-                            <li><a class="dropdown-item" href="#">All products</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/all_products}">All products</a></li>
                             <li><a class="dropdown-item" href="#">Add new product</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="category" data-bs-toggle="dropdown"
+                        <a class="nav-link active dropdown-toggle" href="#" id="category" data-bs-toggle="dropdown"
                            aria-expanded="false"><b>Categories</b></a>
                         <ul class="dropdown-menu" aria-labelledby="category">
                             <li><a class="dropdown-item" href="#">All categories</a></li>
@@ -45,21 +45,21 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="admin" data-bs-toggle="dropdown"
-                           aria-expanded="false"><b>Store admins</b></a>
+                        <a class="nav-link active dropdown-toggle" href="#" id="admin" data-bs-toggle="dropdown"
+                           aria-expanded="false">Store admins</a>
                         <ul class="dropdown-menu" aria-labelledby="admin">
                             <li><a class="dropdown-item" href="#">All admins</a></li>
                             <li><a class="dropdown-item" href="#">Add new admin</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b>Users</b></a>
+                        <a class="nav-link active" href="#">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/index}"><b>View Store</b></a>
+                        <a class="nav-link active" th:href="@{/index}">View Store</a>
                     </li>
                     <li class="nav-item">
-                        <b><a class="nav-link" th:href="@{/logout}">Logout</a></b>
+                        <a class="nav-link active" th:href="@{/logout}">Logout</a>
                     </li>
                 </ul>
                 <form>

@@ -19,7 +19,7 @@ public class ProductController {
     private final ProductService productService;
     private final ProductCategoryService productCategoryService;
 
-    // Show all trips existing in DB paginated
+    // Show all products existing in DB paginated
     @GetMapping("/all_products")
     public String getAllProducts(Model model) {
         model.addAttribute("all_product_categories", productCategoryService.findAlProductCategories());
