@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,16 +23,20 @@ import java.nio.file.StandardCopyOption;
 @RequestMapping("/admin")
 public class ImageUploadController {
 
-    private final String UPLOAD_DIR = "src/main/resources/static/images/product_images/";
+    private static final String productId = "001";
+    private static final String categoryId = "001";
+    private static final String imageSize = "128";
+
+    private String UPLOAD_DIR = "src/main/resources/static/images/product_images/";
+
+//    File theDir = new File(UPLOAD_DIR + productId);
+//    if(!theDir.exists()) {theDir.mkdirs(); }
+
 
     @GetMapping("/upload_image")
     public String homepage() {
         return "admin/upload_image";
     }
-
-    private static final String productNo = "555";
-    private static final String categoryNo = "222";
-    private static final String imageSize = "400";
 
 
     @PostMapping("/upload")
@@ -55,7 +60,7 @@ public class ImageUploadController {
         // Get the extension part of the file name
         String fileExtension = fileNameSplit[fileNameSplit.length - 1];
         // Combine all filename parts together
-        fileName = productNo + categoryNo + imageSize + "." + fileExtension;
+        fileName = productId + categoryId + imageSize + "." + fileExtension;
 
         // Save the file on the local file system
         try {
