@@ -8,12 +8,6 @@
 </head>
 <body>
 
-<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
-<!--@thymesVar id="post" type="your.package.Post"-->
-<!--@thymesVar id="title" type="String"-->
-<!--@thymesVar id="content" type="String"-->
-<!--*/-->
-
 <div layout:fragment="admin-content">
     <div class="controller-sm">
 
@@ -95,49 +89,57 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">
+                <th scope="col" style="width: 10%">
                     <a th:href="@{'/admin/all_products/page/' + ${currentPage} +
                     '?sortField=productId&sortDirection=' + ${reverseSortDirection}}"
                     style="text-decoration:none;">
                     Product ID
                     </a>
                 </th>
-                <th scope="col">Image</th>
-                <th scope="col">
+                <th scope="col" style="width: 20%">
+                    Image
+                </th>
+                <th scope="col"style="width: 40%">
                     <a th:href="@{'/admin/all_products/page/' + ${currentPage} +
                     '?sortField=productName&sortDirection=' + ${reverseSortDirection}}"
                        style="text-decoration:none;">
                         Product Name
                     </a>
                 </th>
-                <th scope="col">
-
+                <th scope="col" style="width: 10%">
                     <a th:href="@{'/admin/all_products/page/' + ${currentPage} +
                     '?sortField=productQuantity&sortDirection=' + ${reverseSortDirection}}"
                        style="text-decoration:none;">
                         Quantity
                     </a>
                 </th>
-                <th scope="col">
+                <th scope="col" style="width: 10%">
                     <a th:href="@{'/admin/all_products/page/' + ${currentPage} +
                     '?sortField=productPrice&sortDirection=' + ${reverseSortDirection}}"
                        style="text-decoration:none;">
-                        Product Price, €
+                        Price, €
                     </a>
                 </th>
-                <th scope="col">Actions</th>
+                <th scope="col" class="justify-content-end" style="width: 10%">
+                    Actions
+                </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="product : ${all_products}">
                 <th th:text="${product.getProductId()}">1</th>
-                <td><img th:src="@{/images/product_images/0101128.jpg}" class="rounded mx-auto d-block"
+                <td><img th:src="@{/images/product_images/0101128.jpg}" class="rounded float-start mx-auto d-block img-thumbnail"
                          alt="Samsung Galaxy Z Fold3 5G" width="128" height="108"
                          src="/static/images/product_images/0101128.jpg"/></td>
                 <td th:text="${product.getProductName()}">Product Name</td>
                 <td th:text="${product.getProductQuantity()}">Quantity</td>
                 <td th:text="${'€ ' + product.getProductPrice()}">Price</td>
-                <td>Edit, Delete</td>
+                <td>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="#" class="btn btn-primary btn-sm" role="button" data-bs-toggle="button">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm" role="button" data-bs-toggle="button">Delete</a>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
