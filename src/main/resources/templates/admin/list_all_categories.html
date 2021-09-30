@@ -30,7 +30,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    th:if="${currentPage > 1}"
-                                   th:href="@{${paginationLink} + '1'}">First</a>
+                                   th:href="@{${paginationLink} + '1'} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}">First</a>
                                 <span class="page-item disabled"
                                       th:unless="${currentPage > 1}">
                                 <span class="page-link">First</span>
@@ -40,7 +40,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    th:if="${currentPage > 1}"
-                                   th:href="@{${paginationLink} + ${currentPage - 1}}">Previous</a>
+                                   th:href="@{${paginationLink} + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Previous</a>
                                 <span class="page-item disabled"
                                       th:unless="${currentPage > 1}">
                                 <span class="page-link">Previous</span>
@@ -50,7 +50,7 @@
                             <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
                                 <a class="page-link"
                                    th:if="${i != currentPage}"
-                                   th:href="@{${paginationLink} + ${i}}">[[${i}]]</a>
+                                   th:href="@{${paginationLink} + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
                                 <span class="page-item active" aria-current="page"
                                       th:unless="${i != currentPage}">
                                 <span class="page-link">[[${i}]]</span>
@@ -60,7 +60,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    th:if="${currentPage < totalPages}"
-                                   th:href="@{${paginationLink} + ${currentPage + 1}}">Next</a>
+                                   th:href="@{${paginationLink} + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
                                 <span class="page-item disabled"
                                       th:unless="${currentPage < totalPages}">
                                 <span class="page-link">Next</span>
@@ -70,7 +70,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    th:if="${currentPage < totalPages}"
-                                   th:href="@{${paginationLink} + ${totalPages}}">Last</a>
+                                   th:href="@{${paginationLink} + ${totalPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
                                 <span class="page-item disabled"
                                       th:unless="${currentPage < totalPages}">
                                 <span class="page-link">Last</span>
@@ -89,9 +89,27 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Category ID</th>
-                <th scope="col">Category Name</th>
-                <th scope="col">Created At</th>
+                <th scope="col">
+                    <a th:href="@{'/admin/all_categories/page/' + ${currentPage} +
+                    '?sortField=categoryId&sortDirection=' + ${reverseSortDirection}}"
+                       style="text-decoration:none;">
+                    Category ID
+                    </a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/admin/all_categories/page/' + ${currentPage} +
+                    '?sortField=categoryName&sortDirection=' + ${reverseSortDirection}}"
+                       style="text-decoration:none;">
+                    Category Name
+                    </a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/admin/all_categories/page/' + ${currentPage} +
+                    '?sortField=categoryCreatedAt&sortDirection=' + ${reverseSortDirection}}"
+                       style="text-decoration:none;">
+                    Created At
+                    </a>
+                </th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -99,7 +117,7 @@
             <tr th:each="category : ${all_categories}">
                 <th th:text="${category.getCategoryId()}">1</th>
                 <td th:text="${category.getCategoryName()}">Category Name Name</td>
-                <td>Created At</td>
+                <td th:text="${category.getCategoryCreatedAt()}">Created At</td>
                 <td>Edit, Delete</td>
             </tr>
             </tbody>
