@@ -36,6 +36,7 @@ public class ProductController {
         Page<Product> page = productService.findAllPageable(currentPage, sortField, sortDirection);
         long totalItems = page.getTotalElements();
         int totalPages = page.getTotalPages();
+
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("totalPages", totalPages);

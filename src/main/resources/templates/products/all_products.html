@@ -114,7 +114,11 @@
                              alt="Samsung Galaxy Z Fold3 5G" width="128" height="108"
                              src="/static/images/product_images/0101128.jpg"/>
                     </a>
-                    <p class="mt-2" th:text="${product.getProductDescription()}">Product description</p>
+
+                    <p class="mt-2" th:text="${#strings.abbreviate(product.getProductDescription(), 90)}">
+                        Product description
+                    </p>
+
                     <button type="button" class="btn btn-success btn-sm"
                             th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
                         Add to Cart
