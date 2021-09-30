@@ -12,18 +12,68 @@
 
     <div class="controller-sm">
 
-        <div class="my-xl-n5">
-            <h1>Admin test panel</h1>
-        </div>
 
-        <p>ExceptionTranslationFilter@2eb88812,
-            org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3445a76f]</p>
-        <p>ExceptionTranslationFilter@2eb88812,
-            org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3445a76f]</p>
-        <p>ExceptionTranslationFilter@2eb88812,
-            org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3445a76f]</p>
-        <p>ExceptionTranslationFilter@2eb88812,
-            org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3445a76f]</p>
+        <div class="col-lg-8 mx-auto p-3 py-md-5">
+            <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                <a class="d-flex align-items-center text-dark text-decoration-none">
+                    <img th:src="@{/images/logo/oswap_200.png}" alt="OSWAP" width="200" height="67"
+                         src="/static/images/logo/oswap_200.png" class="mr-4" />
+                    <span class="fs-4">OSWAP - Administration Panel</span>
+                </a>
+            </header>
+
+            <main>
+                <h1>OSWAP - Online Store With Administration Panel</h1>
+                <p class="fs-5 col-md-8">This online store is a final Project for SDA's 'Java from Scratch' course. Main
+                    aim was to practice using Spring Boot, but we also did some front-end development
+                    to get more familiar with front-end technologies. The aim of this application
+                    is to sell different products in online store. - Products are divided in
+                    categories. Customers can search products, add to cart, proceed to process
+                    orders. - Administrators can manage (add, update, delete) products and
+                    categories, manage carts and orders.</p>
+
+                <hr class="col-3 col-md-2 mb-5">
+
+                <div class="row g-5">
+                    <div class="col-md-6">
+                        <h2>SDA Final Project</h2>
+                        <p>User stories can be found
+                            <b><a target="_blank"
+                                  th:href="@{https://javariga14group-a.atlassian.net/wiki/spaces/OSWAP/pages/5537807/User+stories}">HERE
+                            </a></b>
+                        </p>
+                        <p>Database schema can be seen
+                            <b><a target="_blank"
+                                  th:href="@{https://1drv.ms/u/s!Aqthb3nl58H1jMQ4jXfxaBmZkg4_1g?e=tEhBuU}">HERE
+                            </a></b>
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <h2>Other information</h2>
+                        <p>Spring Boot + Java 11, MySQL, Spring Data JPA, Spring Security,
+                            ThymeLeaf + Thymeleaf Layout Dialect, CSS Bootstrap5</p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Our Team</h2>
+                        <ul class="icon-list">
+                            <li><p>Linda AUŠTE</p></li>
+                            <li><p>Jānis DREIMANIS</p></li>
+                            <li><p></p>Ilmārs MEDNIS</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+            <footer class="pt-5 my-5 text-muted border-top">
+                <div class="text-center">
+                    <p><a style="text-decoration: none;" target="_blank"
+                          th:href="@{https://sdacademy.lv/}">SDA Riga</a>, Latvia, <b>JavaRiga-14</b></p>
+                    <p>&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> OSWAP</p>
+                </div>
+            </footer>
+        </div>
 
     </div>
 </div>
