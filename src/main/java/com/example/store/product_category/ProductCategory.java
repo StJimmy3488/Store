@@ -23,10 +23,10 @@ public class ProductCategory {
     private long categoryId;
 
     @Column(name = "product_category_name", nullable = false)
-    private String name;
+    private String categoryName;
 
     @Column(name = "product_category_created_at", nullable = false)
-    private LocalDate createdAt;
+    private LocalDate categoryCreatedAt;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_category_id")
