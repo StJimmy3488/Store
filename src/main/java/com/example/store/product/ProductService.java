@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -42,7 +43,9 @@ public class ProductService {
 
     // Find all products paginated
     public Page<Product> findAllPageable(int pageNumber, String sortField, String sortDirection) {
-        Pageable pageable = PageRequest.of(pageNumber - 1, 16);
+        Sort sort = Sort.by("productName");
+        sort = sortDirection.equals("asc") ? sort.ascending() : sort.descending();
+        Pageable pageable = PageRequest.of(pageNumber - 1, 16, sort);
         return productRepository.findAll(pageable);
     }
 

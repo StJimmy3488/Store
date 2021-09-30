@@ -44,15 +44,16 @@ public class AdminController {
         Page<Product> page = productService.findAllPageable(currentPage, sortField, sortDirection);
         long totalItems = page.getTotalElements();
         int totalPages = page.getTotalPages();
-
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("totalPages", totalPages);
-        model.addAttribute("sortField", sortField);
-        model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("all_products", page.getContent());
         model.addAttribute("paginationLink", "/admin/all_products/page/");
-        return "/admin/list_all_products";
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        String reverseSortDirection = sortDirection.equals("asc") ? "asc" : "desc";
+        model.addAttribute("reverseSortDirection", reverseSortDirection);
+        return "admin/list_all_products";
     }
 
 

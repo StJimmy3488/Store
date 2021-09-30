@@ -23,7 +23,7 @@ public class ProductController {
     @GetMapping("/all_products")
     public String getAllProducts(Model model) {
         model.addAttribute("all_product_categories", productCategoryService.findAlProductCategories());
-        return getAllProductsByPage(model, 1, "productName", "asc");
+            return getAllProductsByPage(model, 1, "productName", "asc");
     }
 
 
@@ -36,14 +36,15 @@ public class ProductController {
         Page<Product> page = productService.findAllPageable(currentPage, sortField, sortDirection);
         long totalItems = page.getTotalElements();
         int totalPages = page.getTotalPages();
-
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("totalPages", totalPages);
-        model.addAttribute("sortField", sortField);
-        model.addAttribute("sortDirection", sortDirection);
         model.addAttribute("all_products", page.getContent());
         model.addAttribute("paginationLink", "/products/all_products/page/");
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        String reverseSortDirection = sortDirection.equals("asc") ? "asc" : "desc";
+        model.addAttribute("reverseSortDirection", reverseSortDirection);
         return "/products/all_products";
     }
 
