@@ -15,7 +15,7 @@ Spring Boot + Java 11, MySQL, Spring Data JPA, Spring Security, ThymeLeaf + Thym
 <h3>Other information</h3>
 User stories can be found here: https://javariga14group-a.atlassian.net/wiki/spaces/OSWAP/pages/5537807/User+stories
 <br>
-Database schema and data can be seen here: https://drive.google.com/file/d/1JYoRH_Mx3V73t3jXEcPaEEXuyjy-lzR1/view?usp=sharing
+Database schema and data can be seen here: https://drive.google.com/drive/folders/11wkKSnlwI5dxQzraOM6CHEwcSxY8Q9Zm?usp=sharing
 
 <h3>Team</h3>
 Linda Aušte, Jānis Dreimanis and Ilmārs Mednis
