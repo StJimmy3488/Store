@@ -29,7 +29,8 @@
                         <div class="col-8 d-flex justify-content-end">
                             <form class="form-horizontal"
                                   th:object="${cart_item}"
-                                  th:href="@{/cart/add_product_to_cart/{id}(id=${product.getProductId()})}">
+                                  th:action="@{/cart/add_product_to_cart/{id}(id=${product.getProductId()})}"
+                            method="POST">
 
                                 <div class="row">
                                     <div class="col-4 d-flex justify-content-end">
@@ -40,9 +41,10 @@
                                                id="quantity">
                                     </div>
                                     <div class="col-6">
-                                        <button type="button"
+                                        <i class="fa fa-search"></i>
+                                        <button type="submit"
                                                 class="btn btn-sm btn-success"
-                                                th:href="@{/cart/add/{id}(id=${product.getProductId()})}">
+                                                th:href="@{/cart/add_product_to_cart/{id}(id=${product.getProductId()})}">
                                             <span class="px-5">Add to Cart</span>
                                         </button>
                                     </div>

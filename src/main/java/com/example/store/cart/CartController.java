@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class CartController {
     private final UserService userService;
     private final ProductImageService productImageService;
 
-//    @PostMapping("/add_product_to_cart/{id}")
-//    public String addProductToCart(
+    @PostMapping("/add_product_to_cart/{id}")
+    public String addProductToCart() {
 //            @ModelAttribute("cart_item") CartItem cartItem,
 //            @ModelAttribute("id") Product product) {
 //
@@ -41,18 +42,19 @@ public class CartController {
 ////                .filteredBy(LETTERS, DIGITS)
 ////                .build();
 //
-//        String sessionId = session.getId();
+//        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
 //        Cart cart = new Cart();
 //        cart.setSessionId(sessionId.toString());
 //        cart.setCartToken(sessionId.toString());
 //        cartService.saveOrUpdateCart(cart);
 //        Long newCartId = cartService.getBySessionId(sessionId.toString());
 //        //TODO - Continue when Custom Security is finished
+//        System.out.println(sessionId);
 //
 //        cartItemService.saveOrUpdateCartItem(cartItem);
-//
-//
-//        return "cart/cart";
-//    }
+
+
+        return "cart/cart";
+    }
 
 }
