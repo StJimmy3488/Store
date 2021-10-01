@@ -1,6 +1,8 @@
 package com.example.store.cart_item;
 
+import com.example.store.user.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,6 +15,10 @@ public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
 
+    public List<CartItem> getCartItemsByUser(User user) {
+        return cartItemRepository.findByUser(user);
+    }
+
     public List<CartItem> getAllCartItems(){
         return cartItemRepository.findAll();
     }
@@ -21,12 +27,11 @@ public class CartItemService {
         return cartItemRepository.getById(cartItemId);
     }
 
-    public void deleteById(Long cartItemId){
+    public void deleteCartItemById(Long cartItemId){
         cartItemRepository.deleteById(cartItemId);
     }
 
     public CartItem saveOrUpdateCartItem(CartItem cartItem){
-        cartItem.setCartItemCreatedAt(LocalDate.now());
         return cartItemRepository.save(cartItem);
     }
 }

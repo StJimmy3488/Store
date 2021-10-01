@@ -1,6 +1,5 @@
 package com.example.store.user;
 
-import com.example.store.cart.Cart;
 import com.example.store.payment.Payment;
 import com.example.store.role.Role;
 import com.example.store.user_address.UserAddress;
