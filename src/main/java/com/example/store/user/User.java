@@ -1,5 +1,6 @@
 package com.example.store.user;
 
+import com.example.store.cart_item.CartItem;
 import com.example.store.payment.Payment;
 import com.example.store.role.Role;
 import com.example.store.user_address.UserAddress;
@@ -94,7 +95,7 @@ public class User {
     @OneToMany
     @JoinColumn(name = "user_id")
     @ToString.Exclude
-    private List<Cart> carts = new ArrayList<>();
+    private List<CartItem> cart = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @ToString.Exclude

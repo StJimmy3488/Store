@@ -22,12 +22,12 @@ public class CartItemController {
     private final CartItemService cartItemServiceService;
     private final UserService userService;
 
-    @GetMapping("/cart")
-    public String viewShoppingCart(Model model) {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String currentPrincipalName = authentication.getName();
-
-        return "/cart/cart";
-    }
+//    @GetMapping("/cart")
+//    public String viewShoppingCart(Model model) {
+//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//            String currentPrincipalName = authentication.getName();
+//
+//        return "/cart/cart";
+//    }
 
 }

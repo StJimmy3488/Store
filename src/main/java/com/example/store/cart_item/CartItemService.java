@@ -19,9 +19,9 @@ public class CartItemService {
         return cartItemRepository.findByUser(user);
     }
 
-    public List<CartItem> getCartItemsByUsername(String userName) {
-        return cartItemRepository.findByUserName(userName);
-    }
+//    public List<CartItem> getCartItemsByUsername(String userName) {
+//        return cartItemRepository.findByUserName(userName);
+//    }
 
     public List<CartItem> getAllCartItems(){
         return cartItemRepository.findAll();

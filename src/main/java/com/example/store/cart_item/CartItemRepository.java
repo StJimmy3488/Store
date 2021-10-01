@@ -10,7 +10,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     public List<CartItem> findByUser(User user);
 
-    @Query("SELECT userId FROM CartItem u WHERE u.userName = :userName")
-    public List<CartItem> findByUserName(String userName);
+//    @Query("SELECT userId FROM CartItem u WHERE u.userName = :userName")
+//    public List<CartItem> findByUserName(String userName);
 
 }
