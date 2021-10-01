@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,6 +16,8 @@ import java.util.Set;
 public class MyUserDetails implements UserDetails {
 
     private User user;
+
+    private UserRepository userRepository;
 
     public MyUserDetails(User user) {
         this.user = user;
@@ -28,6 +31,14 @@ public class MyUserDetails implements UserDetails {
             authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
         return authorities;
+    }
+
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.getUserByUserName(userName);
+        if (user == null) {
+            throw new UsernameNotFoundException("Could not find User with his UserName!");
+        }
+        return new MyUserDetails(user);
     }
 
     @Override

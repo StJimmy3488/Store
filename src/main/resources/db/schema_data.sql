@@ -16,34 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cart`
---
-
-DROP TABLE IF EXISTS `cart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
-  `cart_id` bigint NOT NULL,
-  `cart_token` varchar(255) DEFAULT NULL,
-  `session_id` varchar(255) DEFAULT NULL,
-  `user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`cart_id`),
-  KEY `FKl70asp4l4w0jmbm1tqyofho4o` (`user_id`),
-  CONSTRAINT `FKl70asp4l4w0jmbm1tqyofho4o` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart`
---
-
-LOCK TABLES `cart` WRITE;
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (2,'46s791g328h453l278u65','46s791g328h453l278u65',1);
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cart_item`
 --
 
@@ -52,15 +24,14 @@ DROP TABLE IF EXISTS `cart_item`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart_item` (
   `cart_item_id` bigint NOT NULL,
-  `cart_item_created_at` date NOT NULL,
-  `quantity` int NOT NULL,
-  `cart_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
   `product_id` bigint NOT NULL,
+  `quantity` int NOT NULL,
   PRIMARY KEY (`cart_item_id`),
-  KEY `FK1uobyhgl1wvgt1jpccia8xxs3` (`cart_id`),
-  KEY `FKjcyd5wv4igqnw413rgxbfu4nv` (`product_id`),
-  CONSTRAINT `FK1uobyhgl1wvgt1jpccia8xxs3` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`),
-  CONSTRAINT `FKjcyd5wv4igqnw413rgxbfu4nv` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+  KEY `fk_cart_product_idx` (`product_id`),
+  KEY `fk_cart_user_idx` (`user_id`),
+  CONSTRAINT `fk_cart_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  CONSTRAINT `fk_cart_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -451,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-30 19:52:26
+-- Dump completed on 2021-10-01 19:50:35

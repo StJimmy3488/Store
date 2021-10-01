@@ -2,6 +2,9 @@ package com.example.store.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,7 +26,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-
     public List<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll();
     }
@@ -32,7 +34,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User getById(Long id) {
+    public User getUserById(Long id) {
         var userOptional = userRepository.findById(id);
 
         if (userOptional.isPresent()) {
@@ -42,5 +44,17 @@ public class UserService {
         System.out.printf("\u001B[31m" + " User with id %d  does not exist \u001B[0m %n", id);
         return null;
     }
+
+//    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//    public String getCurrentlyLoggedInUser(Authentication authentication) {
+//        if (principal instanceof UserDetails) {
+//            String userName = ((UserDetails) principal).getUsername();
+//        } else {
+//            String userName = principal.toString();
+//        }
+//    }
+
+
 }
 
