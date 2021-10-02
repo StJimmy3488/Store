@@ -3,8 +3,6 @@ package com.example.store.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -45,13 +43,12 @@ public class UserService {
         return null;
     }
 
-//    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//    public String getCurrentlyLoggedInUser(Authentication authentication) {
-//        if (principal instanceof UserDetails) {
-//            String userName = ((UserDetails) principal).getUsername();
-//        } else {
-//            String userName = principal.toString();
+//    public User getCurrentlyLoggedInUser(Authentication authentication) {
+//        if (authentication == null) return null;
+//        String user = null;
+//        Object principal = authentication.getPrincipal();
+//        if (principal instanceof MyUserDetails) {
+//            user = ((MyUserDetails) principal).getUsername();
 //        }
 //    }
 
