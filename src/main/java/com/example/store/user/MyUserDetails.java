@@ -19,9 +19,9 @@ public class MyUserDetails implements UserDetails {
 
     private UserRepository userRepository;
 
-    public MyUserDetails(User user) {
-        this.user = user;
-    }
+//    public MyUserDetails(User user) {
+//        this.user = user;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,6 +39,14 @@ public class MyUserDetails implements UserDetails {
             throw new UsernameNotFoundException("Could not find User with his UserName!");
         }
         return new MyUserDetails(user);
+    }
+
+    public MyUserDetails(User user) {
+        this.user = user;
+    }
+
+    public String getFullName() {
+        return this.user.getFullName();
     }
 
     @Override

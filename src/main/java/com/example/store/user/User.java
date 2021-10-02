@@ -110,4 +110,8 @@ public class User {
     public int hashCode() {
         return 0;
     }
+
+    public String getFullName() {
+        return getUserFirstName() + " " + getUserLastName();
+    }
 }
