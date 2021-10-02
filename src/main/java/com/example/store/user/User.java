@@ -27,8 +27,6 @@ import java.util.Set;
 
 public class User {
 
-//    private enum UserGender {FEMALE, MALE}
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", nullable = false, unique = true)
@@ -59,7 +57,6 @@ public class User {
     @Column(name = "user_email", nullable = false, unique = true)
     private String userEmail;
 
-    //    @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")
     private String userGender;
 
@@ -108,14 +105,6 @@ public class User {
     public Integer userGetAge() {
         return Period.between(userDateOfBirth, LocalDate.now()).getYears();
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-//        User user = (User) o;
-//        return Objects.equals(userId, user.userId);
-//    }
 
     @Override
     public int hashCode() {

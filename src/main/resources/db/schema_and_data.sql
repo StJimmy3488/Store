@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `cart_item`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart_item` (
   `cart_item_id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
-  `product_id` bigint NOT NULL,
   `quantity` int NOT NULL,
+  `product_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
   PRIMARY KEY (`cart_item_id`),
   KEY `fk_cart_product_idx` (`product_id`),
   KEY `fk_cart_user_idx` (`user_id`),
@@ -295,17 +295,17 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `user_id` bigint NOT NULL,
+  `enabled` tinyint DEFAULT NULL,
+  `user_created_at` date DEFAULT NULL,
+  `user_dob` date DEFAULT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_first_name` varchar(100) NOT NULL,
+  `user_gender` varchar(255) NOT NULL,
+  `user_last_login` date DEFAULT NULL,
+  `user_last_name` varchar(200) NOT NULL,
   `user_username` varchar(100) NOT NULL,
   `user_password` varchar(100) NOT NULL,
-  `user_first_name` varchar(100) NOT NULL,
-  `user_last_name` varchar(200) NOT NULL,
-  `user_dob` date DEFAULT NULL,
   `user_phone` varchar(255) DEFAULT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `user_gender` varchar(255) NOT NULL,
-  `user_created_at` date DEFAULT NULL,
-  `user_last_login` date DEFAULT NULL,
-  `enabled` tinyint DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `UK_j09k2v8lxofv2vecxu2hde9so` (`user_email`),
   UNIQUE KEY `UK_jnu1quvkutdk73q9fa4d7abe3` (`user_username`)
@@ -318,7 +318,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user','$2a$10$krGWP3CUfNc4bjwAK50V2.R4VoyCMMB1UhesKYJFgXzics9DR3wAu','Ilmars','Mednis','1965-12-25','28742994','ilmarsm@gmail.com','male','2021-09-26','2021-09-18',1),(2,'admin','$2a$10$uMdQOzz.qT3AeR3xJOAbD.tryYvRCSW3nZ2UheCaYJn.0gze7sxee','Administrator','Super','1999-05-25','12345678','admin@ad,im.com','male','2021-09-02','2021-09-27',1),(3,'janis','$2a$10$eZbgLydjmeWwCw0U4Dw.cuzt1ezHovAaKshQYngcJTFEhrrx/b2MG','Jānis','Dreimanis','1970-01-01','12345678','janis@gmail.com','male','2021-09-20','2021-09-27',1),(4,'ilmars','$2a$10$gJuiHVllO0GZoa4jY8wt9.XMZwKUH/YB9m9o7K2YkpmV9W4hTbPCG','Ilmars','Mednis','1965-12-25','28742994','ilmasm@gmail.com','male','2021-09-27','2021-08-29',1),(5,'linda','$2a$10$ruNBfk/3AR2uvVhkvGdxVuzrJwEgu3tDy8DqkWfQekGxgHu9sD8mq','Linda','Aušte','1990-01-01','12345678','linda@gmail.com','female','2021-09-25','2021-09-26',1);
+INSERT INTO `user` VALUES (1,1,'2021-09-26','1965-12-25','ilmarsm@gmail.com','Ilmars','male','2021-09-18','Mednis','user','$2a$10$krGWP3CUfNc4bjwAK50V2.R4VoyCMMB1UhesKYJFgXzics9DR3wAu','28742994'),(2,1,'2021-09-02','1999-05-25','admin@ad,im.com','Administrator','male','2021-09-27','Super','admin','$2a$10$uMdQOzz.qT3AeR3xJOAbD.tryYvRCSW3nZ2UheCaYJn.0gze7sxee','12345678'),(3,1,'2021-09-20','1970-01-01','janis@gmail.com','Jānis','male','2021-09-27','Dreimanis','janis','$2a$10$eZbgLydjmeWwCw0U4Dw.cuzt1ezHovAaKshQYngcJTFEhrrx/b2MG','12345678'),(4,1,'2021-09-27','1965-12-25','ilmasm@gmail.com','Ilmars','male','2021-08-29','Mednis','ilmars','$2a$10$gJuiHVllO0GZoa4jY8wt9.XMZwKUH/YB9m9o7K2YkpmV9W4hTbPCG','28742994'),(5,1,'2021-09-25','1990-01-01','linda@gmail.com','Linda','female','2021-09-26','Aušte','linda','$2a$10$ruNBfk/3AR2uvVhkvGdxVuzrJwEgu3tDy8DqkWfQekGxgHu9sD8mq','12345678');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-01 19:50:35
+-- Dump completed on 2021-10-02  7:47:48
