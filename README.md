@@ -17,7 +17,6 @@ User stories can be found here: https://javariga14group-a.atlassian.net/wiki/spa
 <br>
 Database schema and data can be seen here: https://drive.google.com/drive/folders/11wkKSnlwI5dxQzraOM6CHEwcSxY8Q9Zm?usp=sharing
 
-<h3>Team</h3>
-Linda Aušte, Jānis Dreimanis and Ilmārs Mednis
+
 
 <h4>SDA JavaRiga14</h4>
